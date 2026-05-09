@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dxjtir2bblx4r"]
+
+[ext_resource type="PackedScene" uid="uid://bbxxifrsgv3k6" path="res://Scenes/Items/item.tscn" id="1_1ei6r"]
+[ext_resource type="Texture2D" uid="uid://bcum70vtwywe4" path="res://Assets/Art/Items/tomato.png" id="2_8lnrc"]
+
+[node name="Item" unique_id=805171685 instance=ExtResource("1_1ei6r")]
+
+[node name="Sprite" parent="." index="0" unique_id=1287651581]
+texture = ExtResource("2_8lnrc")
