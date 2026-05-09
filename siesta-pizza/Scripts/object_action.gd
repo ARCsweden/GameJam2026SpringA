@@ -8,6 +8,9 @@ extends Node2D
 @export var interaction_name: String = "Interact"
 @export var highlight_color: Color = Color(1.4, 1.4, 0.0, 1.0)
 
+@export var item_to_give: PackedScene
+@export var processing_time: float = 2.0
+
 #AudioPlayer
 @export var idle_sounds: Array[AudioStream]
 @export var interaction_sound: AudioStream
@@ -18,25 +21,47 @@ extends Node2D
 @export var idle_pitch: float = 1.0
 @export var play_idle_sound: bool = true
 
-
 @export var volume_db: float = 0.0
 @export var pitch_min: float = 1.0
 @export var pitch_max: float = 1.0
 @export var play_sound_on_interact: bool = true
 
-
 var highlighted := false
 var _idle_timer := 0.0
 var _next_idle_time := 0.0
 
+var is_processing := false
+var processing_timer := 0.0
+var pending_player = null
+
+func interact_extra(player):
+	pass
 
 func interact(player):
+	
+	if is_processing:
+		return
+		
 	if play_sound_on_interact and interaction_sound:
 		audio.stream = interaction_sound
 		audio.pitch_scale = randf_range(pitch_min, pitch_max)
 		audio.play()
 
+	if processing_time > 0.0:
+		is_processing = true
+		processing_timer = 0.0
+		pending_player = player
+	else:
+		_give_item(player)
+		player.add_item(item_to_give)
+	interact_extra(player)
+	
+func _give_item(player):
 
+	if item_to_give:
+		var item = item_to_give.instantiate()
+		player.add_child(item)
+	
 func _ready():
 	_idle_timer = 0.0
 	_next_idle_time = randf_range(idle_min_delay, idle_max_delay)
@@ -55,6 +80,16 @@ func _process(delta):
 
 		_idle_timer = 0.0
 		_next_idle_time = randf_range(idle_min_delay, idle_max_delay)
+		
+	_idle_timer += delta
+
+	if is_processing:
+		processing_timer += delta
+
+		if processing_timer >= processing_time:
+			is_processing = false
+			_give_item(pending_player)
+			pending_player = null
 		
 
 func _play_idle_sound():

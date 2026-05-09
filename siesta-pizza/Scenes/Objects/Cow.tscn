@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://4x6iqvn1qthb"]
+[gd_scene format=3 uid="uid://boek4wtlndykh"]
 
 [ext_resource type="PackedScene" uid="uid://dxqttfqeuyp1i" path="res://Scenes/Objects/InteractableObject.tscn" id="1_4rptr"]
 [ext_resource type="Script" uid="uid://42fifgmrubvv" path="res://Scripts/cow.gd" id="2_ywkvi"]
@@ -23,9 +23,19 @@ height = 48.0
 
 [node name="Object" unique_id=1350623349 instance=ExtResource("1_4rptr")]
 script = ExtResource("2_ywkvi")
+interaction_name = null
+highlight_color = null
 idle_sounds = Array[AudioStream]([ExtResource("3_caliw")])
 interaction_sound = ExtResource("4_8nwpd")
+idle_min_delay = null
 idle_max_delay = 8.0
+idle_volume_db = null
+idle_pitch = null
+play_idle_sound = null
+volume_db = null
+pitch_min = null
+pitch_max = null
+play_sound_on_interact = null
 
 [node name="Sprite" parent="." index="2" unique_id=662202950]
 sprite_frames = SubResource("SpriteFrames_xxx6f")
