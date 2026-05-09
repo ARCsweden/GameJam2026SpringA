@@ -22,6 +22,7 @@ radius = 5.0
 [node name="Tomato" unique_id=1350623349 instance=ExtResource("1_yddie")]
 interaction_name = "Tomato"
 item_to_give = ExtResource("2_v0jmr")
+processing_time = 1.0
 interaction_sound = ExtResource("3_k7w3j")
 
 [node name="Sprite" parent="." index="2" unique_id=662202950]
