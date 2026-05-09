@@ -10,9 +10,12 @@ signal interact_finished(item, player)
 @export var interaction_name: String = "Interact"
 @export var highlight_color: Color = Color(1.4, 1.4, 0.0, 1.0)
 
+@export var accepted_input: PackedScene
 @export var item_to_give: PackedScene
 @export var processing_time: float = 2.0
 @export var parallelism  = false
+
+var storage: PackedScene
 
 #AudioPlayer
 @export var idle_sounds: Array[AudioStream]
@@ -36,9 +39,9 @@ var is_processing := false
 var _idle_timer := 0.0
 var _next_idle_time := 0.0
 
-
 var processing_timer := 0.0
 var pending_player = null
+
 
 func interact_extra(player):
 	pass
@@ -62,11 +65,24 @@ func interact(player):
 		
 	interact_extra(player)
 	
+func set_highlight(enabled: bool):
+
+	highlighted = enabled
+
+	var material := sprite.material as ShaderMaterial
+
+	if material:
+		material.set_shader_parameter("enabled", enabled)
+
 func _give_item(player):
 
 	if item_to_give:
 		var item = item_to_give.instantiate()
 		player.add_item(item)
+	
+func _take_item(player):
+	player.take_item(storage)
+	
 	
 func _ready():
 	
@@ -102,7 +118,6 @@ func _process(delta):
 			emit_signal("interact_finished", item_to_give, pending_player)
 			pending_player = null
 			
-		
 
 func _play_idle_sound():
 
@@ -116,14 +131,6 @@ func _play_idle_sound():
 	idle_audio.pitch_scale = randf_range(idle_pitch_min, idle_pitch_max)
 	idle_audio.play()
 
-func set_highlight(enabled: bool):
-
-	highlighted = enabled
-
-	var material := sprite.material as ShaderMaterial
-
-	if material:
-		material.set_shader_parameter("enabled", enabled)
 
 func is_true_parallelism():
 	return parallelism
