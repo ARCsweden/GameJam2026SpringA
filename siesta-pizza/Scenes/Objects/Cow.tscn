@@ -1,9 +1,10 @@
-[gd_scene format=3 uid="uid://b83vka3isok06"]
+[gd_scene format=3 uid="uid://drcqe6emntuv4"]
 
 [ext_resource type="PackedScene" uid="uid://dxqttfqeuyp1i" path="res://Scenes/Objects/InteractableObject.tscn" id="1_4rptr"]
 [ext_resource type="Script" uid="uid://42fifgmrubvv" path="res://Scripts/cow.gd" id="2_ywkvi"]
 [ext_resource type="Texture2D" uid="uid://dp2sg0dt3lumv" path="res://Assets/Art/Objects/Cow.png" id="3_c1fkl"]
 [ext_resource type="AudioStream" uid="uid://cbmb0opg3vgko" path="res://Assets/Music/cow_idle_moo.mp3" id="3_caliw"]
+[ext_resource type="PackedScene" uid="uid://5r6l7c6xlhix" path="res://Scenes/Items/milk.tscn" id="3_h3gkm"]
 [ext_resource type="AudioStream" uid="uid://4nlbljysue31" path="res://Assets/Music/cow_active_moo.mp3" id="4_8nwpd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xxx6f"]
@@ -24,9 +25,9 @@ height = 48.0
 [node name="Cow" unique_id=1350623349 instance=ExtResource("1_4rptr")]
 script = ExtResource("2_ywkvi")
 interaction_name = "Cow"
+item_to_give = ExtResource("3_h3gkm")
 idle_sounds = Array[AudioStream]([ExtResource("3_caliw")])
 interaction_sound = ExtResource("4_8nwpd")
-idle_max_delay = 8.0
 
 [node name="Sprite" parent="." index="2" unique_id=662202950]
 sprite_frames = SubResource("SpriteFrames_xxx6f")
