@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://h32oq7wkmjx0"]
 
 [ext_resource type="PackedScene" uid="uid://duo2g7ybwiker" path="res://Scenes/Player.tscn" id="1_ebmjs"]
+[ext_resource type="PackedScene" path="res://Scenes/world.tscn" id="1_qxrlw"]
 
 [node name="Game" type="Node2D" unique_id=714687722]
 
@@ -8,4 +9,7 @@
 
 [node name="Base" type="TileMapLayer" parent="." unique_id=497901035]
 
+[node name="World" parent="." unique_id=1441224925 instance=ExtResource("1_qxrlw")]
+
 [node name="Player" parent="." unique_id=2103131247 instance=ExtResource("1_ebmjs")]
+position = Vector2(42, 119)
