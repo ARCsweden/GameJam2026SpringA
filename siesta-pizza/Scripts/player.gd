@@ -9,24 +9,23 @@ func get_input():
 func _ready():
 	$AnimatedSprite2D.play()
 
-func _physics_process(delta):
+func _physics_process(delta: float):
 	get_input()
 	move_and_slide()
 
-func _process(delta):
-	
+func _process(delta: float):
 	
 # Animation controller	
 	if(velocity.length() > 0):
 		$AnimatedSprite2D.speed_scale = velocity.length()/15;
-		if abs(velocity.x) >= abs(velocity.y):
+		if(abs(velocity.x) >= abs(velocity.y)):
 			$AnimatedSprite2D.animation = "walk_right"
 			$AnimatedSprite2D.flip_v = false
 			$AnimatedSprite2D.flip_h = velocity.x < 0
 			
-		elif abs(velocity.y) > abs(velocity.x):
+		elif(abs(velocity.y) > abs(velocity.x)):
 			$AnimatedSprite2D.flip_h = false
-			if velocity.y < 0:
+			if(velocity.y < 0):
 				$AnimatedSprite2D.animation = "walk_up"
 			else:
 				$AnimatedSprite2D.animation = "walk_down"
@@ -36,3 +35,12 @@ func _process(delta):
 			$AnimatedSprite2D.animation = "tbag"
 		else:
 			$AnimatedSprite2D.animation = "idle_down"
+
+
+func _on_interact_2d_body_entered(body: Node2D):
+	var temp = body.get_parent()
+	if(temp.has_method("interact")):
+		if(Input.is_action_just_released("L Action") or Input.is_action_just_released("R Action")):
+			temp.interact(self)
+		
+	print_debug("Cow entered")
