@@ -179,6 +179,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" unique_id=2103131247]
 position = Vector2(0, -9)
+collision_mask = 3
 script = ExtResource("1_kyqiw")
 speed = 100
 
