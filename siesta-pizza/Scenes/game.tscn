@@ -2,12 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://duo2g7ybwiker" path="res://Scenes/Player.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://bndt6e4lpftu6" path="res://Scenes/world.tscn" id="1_qxrlw"]
-[ext_resource type="PackedScene" uid="uid://boek4wtlndykh" path="res://Scenes/Objects/cow.tscn" id="3_wrm1d"]
-[ext_resource type="PackedScene" uid="uid://b8dkn0tiuc00c" path="res://Scenes/Objects/tomato_plant.tscn" id="4_wowpa"]
+[ext_resource type="PackedScene" uid="uid://dj200wxofw7ns" path="res://Scenes/Lighting.tscn" id="1_wowpa"]
+[ext_resource type="PackedScene" uid="uid://boek4wtlndykh" path="res://Scenes/Objects/Cow.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" path="res://Scenes/Objects/tomato_plant.tscn" id="4_wowpa"]
 
 [node name="Game" type="Node2D" unique_id=714687722]
 y_sort_enabled = true
 texture_filter = 1
+
+[node name="CanvasModulate" parent="." unique_id=255862130 instance=ExtResource("1_wowpa")]
 
 [node name="World" parent="." unique_id=1441224925 instance=ExtResource("1_qxrlw")]
 y_sort_enabled = true
