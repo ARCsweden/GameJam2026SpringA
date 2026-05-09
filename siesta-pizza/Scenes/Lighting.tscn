@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://dj200wxofw7ns"]
+
+[ext_resource type="Script" uid="uid://bt4ci4hswk7yq" path="res://Scenes/directional_light_2d.gd" id="1_mr3rd"]
+
+[sub_resource type="Gradient" id="Gradient_wowpa"]
+offsets = PackedFloat32Array(0.16867469, 0.43975905)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_i6g32"]
+gradient = SubResource("Gradient_wowpa")
+fill = 1
+fill_from = Vector2(0.46521738, 0.59130436)
+
+[sub_resource type="Gradient" id="Gradient_1l0tm"]
+offsets = PackedFloat32Array(0, 0.6084337)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v158k"]
+gradient = SubResource("Gradient_1l0tm")
+fill = 1
+fill_from = Vector2(0.45217392, 0.5652174)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h4fw4"]
+gradient = SubResource("Gradient_1l0tm")
+fill = 1
+fill_from = Vector2(0.45217392, 0.5652174)
+
+[sub_resource type="Environment" id="Environment_mr3rd"]
+sdfgi_enabled = true
+glow_enabled = true
+fog_enabled = true
+volumetric_fog_enabled = true
+
+[node name="CanvasModulate" type="CanvasModulate" unique_id=255862130]
+color = Color(0.48443317, 0.46931142, 0.46906638, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=66385476]
+texture_filter = 1
+rotation = -1.0192723
+scale = Vector2(1, 0.99999994)
+skew = -1.1641347
+color = Color(0.77948374, 0.7816152, 0.7567723, 0.5372549)
+shadow_enabled = true
+shadow_color = Color(0.37254903, 0.36078432, 0.22352941, 0.14509805)
+shadow_filter = 1
+shadow_filter_smooth = 9.5
+height = 0.04
+max_distance = 719.0
+script = ExtResource("1_mr3rd")
+sunset_color = Color(1, 0.49019608, 0.24313726, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=374974240]
+position = Vector2(-57.99999, 2.9999905)
+scale = Vector2(7.59375, 5.78125)
+color = Color(1, 1, 1, 0.62352943)
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 8.9
+texture = SubResource("GradientTexture2D_i6g32")
+
+[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=291562191]
+position = Vector2(-80.75, -132)
+scale = Vector2(4.5234375, 3.90625)
+color = Color(1, 1, 1, 0.6392157)
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 11.4
+texture = SubResource("GradientTexture2D_v158k")
+
+[node name="PointLight2D3" type="PointLight2D" parent="." unique_id=242544580]
+position = Vector2(5.4999914, -142.5)
+scale = Vector2(2.640625, 4.984375)
+color = Color(1, 1, 1, 0.6862745)
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 3.8
+texture = SubResource("GradientTexture2D_h4fw4")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1652196651]
+environment = SubResource("Environment_mr3rd")
