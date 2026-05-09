@@ -2,10 +2,25 @@ extends CharacterBody2D
 
 @export var speed = 90
 
+var heldItemL: PackedScene
+var heldItemR: PackedScene
+
+var lastInteractL = false
+var lastInteractR = false
 var lastInteractable:Node2D = null
 
-func add_item(item):
-	pass
+func add_item(item: PackedScene):
+	print_debug("Item added")
+	
+	if(lastInteractL and !heldItemL):
+		heldItemL = item
+		
+	if(lastInteractR and !heldItemR):
+		heldItemR = item
+		
+	print("ItemL: {LItem}\nItemR: {RItem}".format({"LItem": heldItemL, "RItem": heldItemR}))
+
+	
 	
 func get_input():
 	var input_direction = Input.get_vector("Left", "Right", "Up", "Down")
@@ -19,10 +34,17 @@ func _physics_process(delta: float):
 	move_and_slide()
 
 func _process(delta: float):
+
 	
 	if(Input.is_action_just_released("L Action") or Input.is_action_just_released("R Action")):
+		lastInteractL = Input.is_action_just_released("L Action")
+		lastInteractR = Input.is_action_just_released("R Action")
+		
 		if(lastInteractable != null):
-			lastInteractable.interact(self)
+			if((lastInteractL and !heldItemL) or (lastInteractR and !heldItemR)):
+				lastInteractable.interact(self)
+			else:
+				print_debug("Hand is full")
 	
 # Animation controller	
 	if(velocity.length() > 0):
