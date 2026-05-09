@@ -46,11 +46,12 @@ var pending_player = null
 func interact_extra(player):
 	pass
 
-func interact(player):
+func interact(player, item):
 	
 	if is_processing:
 		return
-		
+	if item == accepted_input:
+		_take_item(player)	
 	if play_sound_on_interact and interaction_sound:
 		audio.stream = interaction_sound
 		audio.pitch_scale = randf_range(pitch_min, pitch_max)
@@ -61,7 +62,7 @@ func interact(player):
 		processing_timer = 0.0
 		pending_player = player
 	else:
-		_give_item(player)
+		_give_item(player, item)
 		
 	interact_extra(player)
 	
@@ -74,14 +75,13 @@ func set_highlight(enabled: bool):
 	if material:
 		material.set_shader_parameter("enabled", enabled)
 
-func _give_item(player):
+func _give_item(player, item):
 
-	if item_to_give:
-		var item = item_to_give.instantiate()
-		player.add_item(item)
+	player.add_item(item_to_give)	
+	
 	
 func _take_item(player):
-	player.take_item(storage)
+	storage = player.remove_item()
 	
 	
 func _ready():
@@ -114,7 +114,7 @@ func _process(delta):
 
 		if processing_timer >= processing_time:
 			is_processing = false
-			_give_item(pending_player)
+			_give_item(pending_player, item_to_give)
 			emit_signal("interact_finished", item_to_give, pending_player)
 			pending_player = null
 			
