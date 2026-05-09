@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://duo2g7ybwiker" path="res://Scenes/Player.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://bndt6e4lpftu6" path="res://Scenes/world.tscn" id="1_qxrlw"]
-[ext_resource type="PackedScene" uid="uid://4x6iqvn1qthb" path="res://Scenes/Objects/Cow.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://boek4wtlndykh" path="res://Scenes/Objects/Cow.tscn" id="3_wrm1d"]
 
 [node name="Game" type="Node2D" unique_id=714687722]
 y_sort_enabled = true
@@ -12,16 +12,16 @@ texture_filter = 1
 y_sort_enabled = true
 
 [node name="Player" parent="." unique_id=2103131247 instance=ExtResource("1_ebmjs")]
-position = Vector2(42, 119)
 speed = 90
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=452552090]
 position = Vector2(0, -3)
 zoom = Vector2(4, 4)
-limit_left = -224
-limit_top = -80
-limit_right = 144
-limit_bottom = 160
+limit_left = -400
+limit_top = -192
+limit_right = 32
+limit_bottom = 128
+limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
 drag_horizontal_enabled = true
@@ -32,5 +32,5 @@ drag_right_margin = 0.1
 drag_bottom_margin = 0.1
 
 [node name="Object" parent="." unique_id=1350623349 instance=ExtResource("3_wrm1d")]
-position = Vector2(-99, 0)
+position = Vector2(-318, 57)
 interaction_name = "Cow"

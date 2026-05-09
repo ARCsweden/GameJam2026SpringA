@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw3j6813tyf18"
-path="res://.godot/imported/TEMP_tiles.png-e951908f48e722e9342dd6260d5a5c37.ctex"
+uid="uid://cuanb2grmvy08"
+path="res://.godot/imported/interior.png-e303d2c4c7a0e8c4f2f7cd62633e643c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/TEMP_tiles.png"
-dest_files=["res://.godot/imported/TEMP_tiles.png-e951908f48e722e9342dd6260d5a5c37.ctex"]
+source_file="res://Assets/Art/interior.png"
+dest_files=["res://.godot/imported/interior.png-e303d2c4c7a0e8c4f2f7cd62633e643c.ctex"]
 
 [params]
 
