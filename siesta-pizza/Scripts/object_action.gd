@@ -1,6 +1,8 @@
 class_name InteractableObject
 extends Node2D
 
+signal interact_finished(item, player)
+
 @onready var sprite: AnimatedSprite2D  = $Sprite
 @onready var idle_audio: AudioStreamPlayer2D = $IdleAudio
 @onready var audio: AudioStreamPlayer2D = $Audio
@@ -10,6 +12,7 @@ extends Node2D
 
 @export var item_to_give: PackedScene
 @export var processing_time: float = 2.0
+@export var parallelism  = false
 
 #AudioPlayer
 @export var idle_sounds: Array[AudioStream]
@@ -27,10 +30,12 @@ extends Node2D
 @export var play_sound_on_interact: bool = true
 
 var highlighted := false
+var is_processing := false
+
 var _idle_timer := 0.0
 var _next_idle_time := 0.0
 
-var is_processing := false
+
 var processing_timer := 0.0
 var pending_player = null
 
@@ -53,14 +58,14 @@ func interact(player):
 		pending_player = player
 	else:
 		_give_item(player)
-		player.add_item(item_to_give)
+		
 	interact_extra(player)
 	
 func _give_item(player):
 
 	if item_to_give:
 		var item = item_to_give.instantiate()
-		player.add_child(item)
+		player.add_item(item_to_give)
 	
 func _ready():
 	_idle_timer = 0.0
@@ -89,7 +94,9 @@ func _process(delta):
 		if processing_timer >= processing_time:
 			is_processing = false
 			_give_item(pending_player)
+			emit_signal("interact_finished", item_to_give, pending_player)
 			pending_player = null
+			
 		
 
 func _play_idle_sound():
@@ -111,3 +118,6 @@ func set_highlight(enabled: bool):
 
 	if material:
 		material.set_shader_parameter("enabled", enabled)
+
+func is_true_parallelism():
+	return parallelism
