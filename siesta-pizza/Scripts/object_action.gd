@@ -65,8 +65,9 @@ func interact(player):
 func _give_item(player):
 
 	if item_to_give:
-		var item = item_to_give.instantiate()
-		player.add_item(item)
+		#var item = item_to_give.instantiate()
+		#player.add_item(item)
+		player.add_item(item_to_give.duplicate())
 	
 func _ready():
 	
