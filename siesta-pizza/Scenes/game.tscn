@@ -2,9 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://duo2g7ybwiker" path="res://Scenes/Player.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://bndt6e4lpftu6" path="res://Scenes/world.tscn" id="1_qxrlw"]
-[ext_resource type="PackedScene" path="res://Scenes/Objects/cow.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://boek4wtlndykh" path="res://Scenes/Objects/cow.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://b8dkn0tiuc00c" path="res://Scenes/Objects/tomato_plant.tscn" id="4_wowpa"]
-[ext_resource type="PackedScene" uid="uid://dxjtir2bblx4r" path="res://Scenes/Items/tomato.tscn" id="5_i6g32"]
 
 [node name="Game" type="Node2D" unique_id=714687722]
 y_sort_enabled = true
@@ -38,8 +37,6 @@ position = Vector2(-318, 57)
 
 [node name="Tomato" parent="." unique_id=1652160933 instance=ExtResource("4_wowpa")]
 position = Vector2(-368, -154)
-item_to_give = ExtResource("5_i6g32")
 
 [node name="Tomato2" parent="." unique_id=1595038453 instance=ExtResource("4_wowpa")]
 position = Vector2(-317, -154)
-item_to_give = ExtResource("5_i6g32")
