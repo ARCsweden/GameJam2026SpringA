@@ -19,6 +19,14 @@ region = Rect2(32, 0, 32, 32)
 atlas = ExtResource("2_gntrk")
 region = Rect2(64, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gntrk"]
+atlas = ExtResource("2_gntrk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dewec"]
+atlas = ExtResource("2_gntrk")
+region = Rect2(32, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_bhhdu"]
 atlas = ExtResource("3_dewec")
 region = Rect2(0, 0, 32, 32)
@@ -108,6 +116,17 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_gntrk")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_dewec")
+}],
+"loop": true,
+"name": &"tbag",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bhhdu")
 }, {
@@ -177,16 +196,26 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gntrk"]
+
 [node name="Player" type="CharacterBody2D" unique_id=2103131247]
-position = Vector2(0, -9)
+texture_filter = 1
 collision_mask = 3
 script = ExtResource("1_kyqiw")
 speed = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=924158443]
-position = Vector2(0, 9)
 shape = SubResource("CircleShape2D_qxrlw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=252040419]
+position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_8flut")
 animation = &"idle_down"
+frame_progress = 0.5552331
+
+[node name="Interact2D" type="Area2D" parent="." unique_id=1692669902]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact2D" unique_id=1686841319]
+shape = SubResource("CircleShape2D_gntrk")
+debug_color = Color(0.31299862, 0.6265178, 0, 0.41960785)
