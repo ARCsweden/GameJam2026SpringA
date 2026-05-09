@@ -15,7 +15,8 @@ signal interact_finished(item, player)
 @export var processing_time: float = 2.0
 @export var parallelism  = false
 
-var storage: PackedScene
+var storage_in: PackedScene
+var storage_out: PackedScene
 
 #AudioPlayer
 @export var idle_sounds: Array[AudioStream]
@@ -42,6 +43,8 @@ var _next_idle_time := 0.0
 var processing_timer := 0.0
 var pending_player = null
 
+var is_source := false
+
 
 func interact_extra(player):
 	pass
@@ -50,20 +53,24 @@ func interact(player, item):
 	
 	if is_processing:
 		return
-	if item == accepted_input:
-		_take_item(player)	
+		
+	if storage_out != null:
+		_give_item(player, storage_out)
+
+	if processing_time > 0.0:
+		if accepted_input.item_id != "":
+			_take_item(player)
+		else:
+			is_source = true
+		is_processing = true
+		processing_timer = 0.0
+		pending_player = player
+		
 	if play_sound_on_interact and interaction_sound:
 		audio.stream = interaction_sound
 		audio.pitch_scale = randf_range(pitch_min, pitch_max)
 		audio.play()
-
-	if processing_time > 0.0:
-		is_processing = true
-		processing_timer = 0.0
-		pending_player = player
-	else:
-		_give_item(player, item)
-		
+			
 	interact_extra(player)
 	
 func set_highlight(enabled: bool):
@@ -77,11 +84,13 @@ func set_highlight(enabled: bool):
 
 func _give_item(player, item):
 
-	player.add_item(item_to_give)	
+	player.add_item(item_to_give)
+	storage_out = null;	
+	is_source = false
 	
 	
 func _take_item(player):
-	storage = player.remove_item()
+	storage_in = player.remove_item()
 	
 	
 func _ready():
@@ -114,7 +123,9 @@ func _process(delta):
 
 		if processing_timer >= processing_time:
 			is_processing = false
-			_give_item(pending_player, item_to_give)
+			storage_out = item_to_give
+			is_source = true
+			storage_in = null;
 			emit_signal("interact_finished", item_to_give, pending_player)
 			pending_player = null
 			
@@ -132,5 +143,5 @@ func _play_idle_sound():
 	idle_audio.play()
 
 
-func is_true_parallelism():
-	return parallelism
+func is_object_source():
+	return is_source

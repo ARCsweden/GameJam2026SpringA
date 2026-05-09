@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dcigmo516jm40"]
+
+[ext_resource type="PackedScene" uid="uid://dxqttfqeuyp1i" path="res://Scenes/Objects/InteractableObject.tscn" id="1_eo5vf"]
+[ext_resource type="PackedScene" uid="uid://dxjtir2bblx4r" path="res://Scenes/Items/tomato.tscn" id="2_n8r5h"]
+[ext_resource type="PackedScene" uid="uid://5r6l7c6xlhix" path="res://Scenes/Items/milk.tscn" id="3_ur3qo"]
+[ext_resource type="Texture2D" uid="uid://bsw88np1qm2lt" path="res://Assets/Art/filler.svg" id="4_n8r5h"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ur3qo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_n8r5h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qkp4g"]
+size = Vector2(117.00001, 109.99999)
+
+[node name="Oven" unique_id=1350623349 instance=ExtResource("1_eo5vf")]
+interaction_name = "Oven"
+accepted_input = ExtResource("2_n8r5h")
+item_to_give = ExtResource("3_ur3qo")
+parallelism = true
+
+[node name="Sprite" parent="." index="2" unique_id=662202950]
+sprite_frames = SubResource("SpriteFrames_ur3qo")
+animation = &"default"
+
+[node name="Collision" parent="Body" parent_id_path=PackedInt32Array(1925049183) index="0" unique_id=738313803]
+position = Vector2(-1, -0.5000019)
+shape = SubResource("RectangleShape2D_qkp4g")
