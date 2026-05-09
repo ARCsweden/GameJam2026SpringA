@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://h32oq7wkmjx0"]
 
-[ext_resource type="PackedScene" path="res://Scenes/Player.tscn" id="1_ebmjs"]
-[ext_resource type="PackedScene" uid="uid://4x6iqvn1qthb" path="res://Scenes/Objects/Cow.tscn" id="2_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://duo2g7ybwiker" path="res://Scenes/Player.tscn" id="1_ebmjs"]
+[ext_resource type="PackedScene" uid="uid://4x6iqvn1qthb" path="res://Scenes/Objects/cow.tscn" id="2_qxrlw"]
 
 [node name="Game" type="Node2D" unique_id=714687722]
 
@@ -12,4 +12,4 @@
 [node name="Player" parent="." unique_id=2103131247 instance=ExtResource("1_ebmjs")]
 
 [node name="Object" parent="." unique_id=1350623349 instance=ExtResource("2_qxrlw")]
-position = Vector2(230, 59)
+position = Vector2(279, 81)

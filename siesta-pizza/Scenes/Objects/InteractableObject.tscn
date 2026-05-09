@@ -23,12 +23,15 @@ script = ExtResource("1_awgt1")
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="." unique_id=462252010]
 
+[node name="IdleAudio" type="AudioStreamPlayer2D" parent="." unique_id=1806861776]
+
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=662202950]
 material = SubResource("ShaderMaterial_w0aqa")
 sprite_frames = SubResource("SpriteFrames_awgt1")
 animation = &"idle"
 
 [node name="Body" type="StaticBody2D" parent="." unique_id=1925049183]
+collision_layer = 4
 
 [node name="Collision" type="CollisionShape2D" parent="Body" unique_id=738313803]
 rotation = -1.5707964

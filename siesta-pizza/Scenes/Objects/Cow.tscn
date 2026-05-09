@@ -1,44 +1,36 @@
 [gd_scene format=3 uid="uid://4x6iqvn1qthb"]
 
-[ext_resource type="Script" uid="uid://dntw774ghrvqy" path="res://Scripts/object_action.gd" id="1_l3pmd"]
-[ext_resource type="Shader" uid="uid://16eoqiwixe66" path="res://Scenes/Objects/InteractableObject.gdshader" id="2_5litg"]
-[ext_resource type="Texture2D" uid="uid://dp2sg0dt3lumv" path="res://Assets/Art/Objects/Cow.png" id="3_5litg"]
+[ext_resource type="PackedScene" uid="uid://dxqttfqeuyp1i" path="res://Scenes/Objects/InteractableObject.tscn" id="1_4rptr"]
+[ext_resource type="Script" uid="uid://42fifgmrubvv" path="res://Scripts/cow.gd" id="2_ywkvi"]
+[ext_resource type="Texture2D" uid="uid://dp2sg0dt3lumv" path="res://Assets/Art/Objects/Cow.png" id="3_c1fkl"]
+[ext_resource type="AudioStream" uid="uid://cbmb0opg3vgko" path="res://Assets/Music/cow_idle_moo.mp3" id="3_caliw"]
+[ext_resource type="AudioStream" uid="uid://4nlbljysue31" path="res://Assets/Music/cow_active_moo.mp3" id="4_8nwpd"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w0aqa"]
-shader = ExtResource("2_5litg")
-shader_parameter/outline_color = Color(1, 1, 0, 1)
-shader_parameter/outline_size = 1.0
-shader_parameter/enabled = false
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_22gce"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_xxx6f"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_5litg")
+"texture": ExtResource("3_c1fkl")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5litg"]
-radius = 15.0
-height = 50.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_caliw"]
+radius = 12.0
+height = 48.0
 
-[node name="Object" type="Node2D" unique_id=1350623349]
-script = ExtResource("1_l3pmd")
+[node name="Object" unique_id=1350623349 instance=ExtResource("1_4rptr")]
+script = ExtResource("2_ywkvi")
+idle_sounds = Array[AudioStream]([ExtResource("3_caliw")])
+interaction_sound = ExtResource("4_8nwpd")
+idle_max_delay = 8.0
 
-[node name="Audio" type="AudioStreamPlayer2D" parent="." unique_id=462252010]
+[node name="Sprite" parent="." index="2" unique_id=662202950]
+sprite_frames = SubResource("SpriteFrames_xxx6f")
+animation = &"default"
 
-[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=662202950]
-texture_filter = 1
-material = SubResource("ShaderMaterial_w0aqa")
-sprite_frames = SubResource("SpriteFrames_22gce")
-animation = &"idle"
-
-[node name="Body" type="StaticBody2D" parent="." unique_id=1925049183]
-
-[node name="Collision" type="CollisionShape2D" parent="Body" unique_id=738313803]
-position = Vector2(1, 16)
-rotation = -1.5707964
-shape = SubResource("CapsuleShape2D_5litg")
+[node name="Collision" parent="Body" parent_id_path=PackedInt32Array(1925049183) index="0" unique_id=738313803]
+position = Vector2(3, 11)
+shape = SubResource("CapsuleShape2D_caliw")

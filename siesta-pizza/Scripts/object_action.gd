@@ -41,6 +41,7 @@ func _ready():
 	_idle_timer = 0.0
 	_next_idle_time = randf_range(idle_min_delay, idle_max_delay)
 	audio.volume_db = volume_db
+	
 	if sprite.sprite_frames.has_animation("idle"):
 		sprite.play("idle")
 		
