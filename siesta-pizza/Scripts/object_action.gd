@@ -53,7 +53,7 @@ func interact(player):
 		pending_player = player
 	else:
 		_give_item(player)
-		#give here
+		player.add_item(item_to_give)
 	interact_extra(player)
 	
 func _give_item(player):
