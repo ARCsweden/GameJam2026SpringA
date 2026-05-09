@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://4x6iqvn1qthb"]
+
+[ext_resource type="Script" uid="uid://dntw774ghrvqy" path="res://Scripts/object_action.gd" id="1_l3pmd"]
+[ext_resource type="Shader" uid="uid://16eoqiwixe66" path="res://Scenes/Objects/InteractableObject.gdshader" id="2_5litg"]
+[ext_resource type="Texture2D" uid="uid://dp2sg0dt3lumv" path="res://Assets/Art/Objects/Cow.png" id="3_5litg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w0aqa"]
+shader = ExtResource("2_5litg")
+shader_parameter/outline_color = Color(1, 1, 0, 1)
+shader_parameter/outline_size = 1.0
+shader_parameter/enabled = false
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_22gce"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5litg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5litg"]
+radius = 15.0
+height = 50.0
+
+[node name="Object" type="Node2D" unique_id=1350623349]
+script = ExtResource("1_l3pmd")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="." unique_id=462252010]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=662202950]
+texture_filter = 1
+material = SubResource("ShaderMaterial_w0aqa")
+sprite_frames = SubResource("SpriteFrames_22gce")
+animation = &"idle"
+
+[node name="Body" type="StaticBody2D" parent="." unique_id=1925049183]
+
+[node name="Collision" type="CollisionShape2D" parent="Body" unique_id=738313803]
+position = Vector2(1, 16)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_5litg")

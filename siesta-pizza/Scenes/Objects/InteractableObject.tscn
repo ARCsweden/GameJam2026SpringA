@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dxqttfqeuyp1i"]
+
+[ext_resource type="Script" uid="uid://dntw774ghrvqy" path="res://Scripts/object_action.gd" id="1_awgt1"]
+[ext_resource type="Shader" uid="uid://16eoqiwixe66" path="res://Scenes/Objects/InteractableObject.gdshader" id="2_7locg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w0aqa"]
+shader = ExtResource("2_7locg")
+shader_parameter/outline_color = Color(1, 1, 0, 1)
+shader_parameter/outline_size = 1.0
+shader_parameter/enabled = false
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_awgt1"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Object" type="Node2D" unique_id=1350623349]
+texture_filter = 1
+script = ExtResource("1_awgt1")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="." unique_id=462252010]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=662202950]
+material = SubResource("ShaderMaterial_w0aqa")
+sprite_frames = SubResource("SpriteFrames_awgt1")
+animation = &"idle"
+
+[node name="Body" type="StaticBody2D" parent="." unique_id=1925049183]
+
+[node name="Collision" type="CollisionShape2D" parent="Body" unique_id=738313803]
+rotation = -1.5707964
