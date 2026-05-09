@@ -20,6 +20,20 @@ func add_item(item: PackedScene):
 		
 	print("ItemL: {LItem}\nItemR: {RItem}".format({"LItem": heldItemL, "RItem": heldItemR}))
 
+func remove_item() -> PackedScene:
+	if(lastInteractL and heldItemL):
+		var temp = heldItemR
+		heldItemL = null
+		return temp
+		
+	if(lastInteractR and heldItemR):
+		var temp = heldItemR
+		heldItemR = null
+		return temp
+		
+	else:
+		return null
+	
 	
 	
 func get_input():
