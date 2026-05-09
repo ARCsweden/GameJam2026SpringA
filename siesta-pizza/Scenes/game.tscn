@@ -1,12 +1,54 @@
 [gd_scene format=3 uid="uid://h32oq7wkmjx0"]
 
+[ext_resource type="Shader" uid="uid://bo6750ci8jn4t" path="res://Scenes/testlight.gdshader" id="1_3dryh"]
 [ext_resource type="PackedScene" uid="uid://duo2g7ybwiker" path="res://Scenes/Player.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://bndt6e4lpftu6" path="res://Scenes/world.tscn" id="1_qxrlw"]
+[ext_resource type="Script" uid="uid://bt4ci4hswk7yq" path="res://Scenes/directional_light_2d.gd" id="2_wowpa"]
 [ext_resource type="PackedScene" uid="uid://boek4wtlndykh" path="res://Scenes/Objects/Cow.tscn" id="3_wrm1d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wowpa"]
+shader = ExtResource("1_3dryh")
+shader_parameter/pixel_size = 10.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3dryh"]
+noise_type = 3
+frequency = 0.0052
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wowpa"]
+width = 508
+noise = SubResource("FastNoiseLite_3dryh")
+seamless = true
+seamless_blend_skirt = 0.498
 
 [node name="Game" type="Node2D" unique_id=714687722]
 y_sort_enabled = true
 texture_filter = 1
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1790054902]
+color = Color(0.48443317, 0.46931142, 0.46906638, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="CanvasModulate" unique_id=1093567914]
+texture_filter = 1
+material = SubResource("ShaderMaterial_wowpa")
+rotation = -1.0192723
+scale = Vector2(1, 0.99999994)
+skew = -1.1641347
+color = Color(0.77948374, 0.7816152, 0.7567723, 0.5372549)
+shadow_enabled = true
+shadow_color = Color(0.37254903, 0.36078432, 0.22352941, 0.14509805)
+shadow_filter = 1
+shadow_filter_smooth = 9.5
+height = 0.04
+max_distance = 719.0
+script = ExtResource("2_wowpa")
+sunset_color = Color(1, 0.49019608, 0.24313726, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="CanvasModulate" unique_id=1245371464]
+position = Vector2(-63.499996, -38.5)
+scale = Vector2(0.32874015, 0.5722656)
+color = Color(0.87465316, 0.85487956, 0.7602548, 1)
+energy = 0.85
+texture = SubResource("NoiseTexture2D_wowpa")
 
 [node name="World" parent="." unique_id=1441224925 instance=ExtResource("1_qxrlw")]
 y_sort_enabled = true

@@ -27,8 +27,7 @@ interaction_name = null
 highlight_color = null
 idle_sounds = Array[AudioStream]([ExtResource("3_caliw")])
 interaction_sound = ExtResource("4_8nwpd")
-idle_min_delay = null
-idle_max_delay = 8.0
+idle_min_delay = 8.0
 idle_volume_db = null
 idle_pitch = null
 play_idle_sound = null
@@ -41,6 +40,9 @@ play_sound_on_interact = null
 sprite_frames = SubResource("SpriteFrames_xxx6f")
 animation = &"default"
 
-[node name="Collision" parent="Body" parent_id_path=PackedInt32Array(1925049183) index="0" unique_id=738313803]
+[node name="Body" parent="." index="3" unique_id=1925049183]
+collision_layer = 6
+
+[node name="Collision" parent="Body" index="0" unique_id=738313803]
 position = Vector2(3, 11)
 shape = SubResource("CapsuleShape2D_caliw")
