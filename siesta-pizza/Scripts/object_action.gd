@@ -21,7 +21,8 @@ signal interact_finished(item, player)
 @export var idle_min_delay: float = 5.0
 @export var idle_max_delay: float = 15.0
 @export var idle_volume_db: float = -10.0
-@export var idle_pitch: float = 1.0
+@export var idle_pitch_min: float = 0.5
+@export var idle_pitch_max: float = 1.0
 @export var play_idle_sound: bool = true
 
 @export var volume_db: float = 0.0
@@ -64,10 +65,15 @@ func interact(player):
 func _give_item(player):
 
 	if item_to_give:
-		var item = item_to_give.instantiate()
-		player.add_item(item_to_give)
+		#var item = item_to_give.instantiate()
+		#player.add_item(item)
+		player.add_item(item_to_give.duplicate())
 	
 func _ready():
+	
+	if sprite.material:
+		sprite.material = sprite.material.duplicate()
+		
 	_idle_timer = 0.0
 	_next_idle_time = randf_range(idle_min_delay, idle_max_delay)
 	audio.volume_db = volume_db
@@ -108,6 +114,7 @@ func _play_idle_sound():
 
 	idle_audio.stream = sound
 	idle_audio.volume_db = idle_volume_db
+	idle_audio.pitch_scale = randf_range(idle_pitch_min, idle_pitch_max)
 	idle_audio.play()
 
 func set_highlight(enabled: bool):

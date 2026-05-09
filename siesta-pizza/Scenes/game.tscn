@@ -3,8 +3,10 @@
 [ext_resource type="Shader" uid="uid://bo6750ci8jn4t" path="res://Scenes/testlight.gdshader" id="1_3dryh"]
 [ext_resource type="PackedScene" uid="uid://duo2g7ybwiker" path="res://Scenes/Player.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://bndt6e4lpftu6" path="res://Scenes/world.tscn" id="1_qxrlw"]
+
 [ext_resource type="Script" uid="uid://bt4ci4hswk7yq" path="res://Scenes/directional_light_2d.gd" id="2_wowpa"]
-[ext_resource type="PackedScene" uid="uid://boek4wtlndykh" path="res://Scenes/Objects/Cow.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://boek4wtlndykh" path="res://Scenes/Objects/cow.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://b8dkn0tiuc00c" path="res://Scenes/Objects/tomato_plant.tscn" id="4_wowpa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wowpa"]
 shader = ExtResource("1_3dryh")
@@ -75,4 +77,9 @@ drag_bottom_margin = 0.1
 
 [node name="Object" parent="." unique_id=1350623349 instance=ExtResource("3_wrm1d")]
 position = Vector2(-318, 57)
-interaction_name = "Cow"
+
+[node name="Tomato" parent="." unique_id=1652160933 instance=ExtResource("4_wowpa")]
+position = Vector2(-368, -154)
+
+[node name="Tomato2" parent="." unique_id=1595038453 instance=ExtResource("4_wowpa")]
+position = Vector2(-317, -154)

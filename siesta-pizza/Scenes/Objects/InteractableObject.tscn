@@ -31,7 +31,7 @@ sprite_frames = SubResource("SpriteFrames_awgt1")
 animation = &"idle"
 
 [node name="Body" type="StaticBody2D" parent="." unique_id=1925049183]
-collision_layer = 4
+collision_layer = 6
 
 [node name="Collision" type="CollisionShape2D" parent="Body" unique_id=738313803]
 rotation = -1.5707964
