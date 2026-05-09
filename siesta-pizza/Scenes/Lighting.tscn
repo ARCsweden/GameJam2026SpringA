@@ -25,12 +25,6 @@ gradient = SubResource("Gradient_1l0tm")
 fill = 1
 fill_from = Vector2(0.45217392, 0.5652174)
 
-[sub_resource type="Environment" id="Environment_mr3rd"]
-sdfgi_enabled = true
-glow_enabled = true
-fog_enabled = true
-volumetric_fog_enabled = true
-
 [node name="CanvasModulate" type="CanvasModulate" unique_id=255862130]
 color = Color(0.48443317, 0.46931142, 0.46906638, 1)
 
@@ -47,6 +41,7 @@ shadow_filter_smooth = 9.5
 height = 0.04
 max_distance = 719.0
 script = ExtResource("1_mr3rd")
+day_length = 30
 sunset_color = Color(1, 0.49019608, 0.24313726, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=374974240]
@@ -75,6 +70,3 @@ shadow_enabled = true
 shadow_filter = 1
 shadow_filter_smooth = 3.8
 texture = SubResource("GradientTexture2D_h4fw4")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1652196651]
-environment = SubResource("Environment_mr3rd")
