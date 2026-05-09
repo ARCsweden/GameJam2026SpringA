@@ -2,6 +2,11 @@ extends CharacterBody2D
 
 @export var speed = 90
 
+var lastInteractable:Node2D = null
+
+func add_item(item):
+	pass
+	
 func get_input():
 	var input_direction = Input.get_vector("Left", "Right", "Up", "Down")
 	velocity = input_direction * speed
@@ -14,6 +19,10 @@ func _physics_process(delta: float):
 	move_and_slide()
 
 func _process(delta: float):
+	
+	if(Input.is_action_just_released("L Action") or Input.is_action_just_released("R Action")):
+		if(lastInteractable != null):
+			lastInteractable.interact(self)
 	
 # Animation controller	
 	if(velocity.length() > 0):
@@ -38,9 +47,15 @@ func _process(delta: float):
 
 
 func _on_interact_2d_body_entered(body: Node2D):
-	var temp = body.get_parent()
-	if(temp.has_method("interact")):
-		if(Input.is_action_just_released("L Action") or Input.is_action_just_released("R Action")):
-			temp.interact(self)
-		
-	print_debug("Cow entered")
+	var tempBody = body.get_parent()	
+	if(tempBody.has_method("interact")):
+		print_debug("Interactable entered")
+		tempBody.set_highlight(true)
+		lastInteractable = tempBody	
+
+
+func _on_interact_2d_body_exited(body: Node2D) -> void:
+	if(body.get_parent() == lastInteractable):
+		print_debug("Interactable exited")
+		lastInteractable.set_highlight(false)
+		lastInteractable = null

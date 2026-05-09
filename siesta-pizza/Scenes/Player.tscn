@@ -205,12 +205,11 @@ script = ExtResource("1_kyqiw")
 speed = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=924158443]
-position = Vector2(0, 9)
 shape = SubResource("CircleShape2D_qxrlw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=252040419]
-position = Vector2(0, -9)
 texture_filter = 1
+position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_8flut")
 animation = &"idle_down"
 frame_progress = 0.1353486
@@ -223,3 +222,4 @@ shape = SubResource("CircleShape2D_gntrk")
 debug_color = Color(0.31299862, 0.6265178, 0, 0.41960785)
 
 [connection signal="body_entered" from="Interact2D" to="." method="_on_interact_2d_body_entered"]
+[connection signal="body_exited" from="Interact2D" to="." method="_on_interact_2d_body_exited"]
