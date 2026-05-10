@@ -168,6 +168,7 @@ func _process(delta):
 			storage_in_empty = true;
 			storage_out_empty = false
 			$ItemSprite.visible = true;
+			audio.stop()
 			print_debug("Processing completed")
 			pending_player = null
 			
