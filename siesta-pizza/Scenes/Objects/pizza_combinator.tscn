@@ -2,8 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://dxqttfqeuyp1i" path="res://Scenes/Objects/InteractableObject.tscn" id="1_68qs5"]
 [ext_resource type="Script" uid="uid://d2o837hey5ml" path="res://Scripts/pizza_combinator.gd" id="2_p10rj"]
-[ext_resource type="PackedScene" uid="uid://ciw6yqqb5rtt0" path="res://Scenes/Items/pizza_cooked.tscn" id="3_adg8o"]
+[ext_resource type="PackedScene" uid="uid://dsexncgeq7tua" path="res://Scenes/Items/pizza_uncooked.tscn" id="3_c5iby"]
 [ext_resource type="Texture2D" uid="uid://lonyvlmxli6o" path="res://Assets/Art/Objects/Trashcan.png" id="3_p10rj"]
+[ext_resource type="Texture2D" uid="uid://1vqghrt0cmck" path="res://Assets/Art/Items/pizza_uncooked.png" id="5_v4fjo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_adg8o"]
 animations = [{
@@ -22,7 +23,7 @@ radius = 7.0
 [node name="Object" unique_id=1350623349 instance=ExtResource("1_68qs5")]
 script = ExtResource("2_p10rj")
 interaction_name = "Pizza Combinator"
-item_to_give = ExtResource("3_adg8o")
+item_to_give = ExtResource("3_c5iby")
 processing_time = 0.0
 idle_min_delay = 1000.0
 idle_max_delay = 1000.0
@@ -30,6 +31,11 @@ idle_max_delay = 1000.0
 [node name="Sprite" parent="." index="2" unique_id=662202950]
 sprite_frames = SubResource("SpriteFrames_adg8o")
 animation = &"default"
+
+[node name="ItemSprite" parent="." index="3" unique_id=339095134]
+position = Vector2(0, -35)
+scale = Vector2(0.1796875, 0.1796875)
+texture = ExtResource("5_v4fjo")
 
 [node name="Collision" parent="Body" parent_id_path=PackedInt32Array(1925049183) index="0" unique_id=738313803]
 position = Vector2(0, 14)

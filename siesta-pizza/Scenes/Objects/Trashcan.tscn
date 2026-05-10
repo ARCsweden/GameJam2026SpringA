@@ -22,6 +22,7 @@ height = 26.0
 
 [node name="Object" unique_id=1350623349 instance=ExtResource("1_4y1v3")]
 script = ExtResource("2_4wcjr")
+processing_time = 0.0
 interaction_sound = ExtResource("3_bsuym")
 
 [node name="Sprite" parent="." index="2" unique_id=662202950]

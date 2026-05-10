@@ -112,7 +112,8 @@ func _give_item(player, item):
 	player.add_item(item)
 	storage_out_empty = true;
 	$ItemSprite.visible = false;
-	is_source = false
+	if processing_time != 0.0:
+		is_source = false
 	
 	
 func _take_item(player):
