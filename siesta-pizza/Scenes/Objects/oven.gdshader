@@ -4,10 +4,10 @@ shader_type canvas_item;
 // Wide, low flames for an oven mouth.
 // Uses tapered flame licks instead of glowing orb particles.
 
-uniform float speed : hint_range(0.1, 5.0) = 1.0;
+uniform float speed : hint_range(0.1, 5.0) = 0.7;
 uniform float pixelSize : hint_range(0.001, 0.1) = 0.055;
-uniform float alpha : hint_range(0.0, 1.0) = 0.95;
-uniform float flickerStrength : hint_range(0.0, 0.5) = 0.18;
+uniform float alpha : hint_range(0.0, 1.0) = 0.75;
+uniform float flickerStrength : hint_range(0.0, 0.5) = 0.15;
 
 uniform vec3 fromColor : source_color = vec3(1.0, 0.48, 0.05);
 uniform vec3 toColor : source_color = vec3(0.55, 0.08, 0.02);
@@ -33,7 +33,7 @@ uniform float smokeDrift : hint_range(0.0, 0.5) = 0.08;
 uniform vec3 smokeColor : source_color = vec3(0.08, 0.065, 0.055);
 
 uniform float windForce : hint_range(-0.5, 0.5) = 0.0;
-uniform float aspectRatio : hint_range(0.01, 5.0) = 4.0;
+uniform float aspectRatio : hint_range(0.01, 5.0) = 1.6;
 uniform vec2 posOffset = vec2(0.0, -0.58);
 
 uniform float ovenWidth : hint_range(0.1, 2.0) = 1.25;

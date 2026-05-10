@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://boek4wtlndykh" path="res://Scenes/Objects/Cow.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://b8dkn0tiuc00c" path="res://Scenes/Objects/tomato_plant.tscn" id="4_wowpa"]
 [ext_resource type="PackedScene" uid="uid://dcigmo516jm40" path="res://Scenes/Objects/oven.tscn" id="6_i6g32"]
+[ext_resource type="Texture2D" uid="uid://d0olvkdgafqlo" path="res://firetexture.tres" id="7_v158k"]
+[ext_resource type="Script" uid="uid://del50wexkfju" path="res://Scenes/point_light_2d.gd" id="8_h4fw4"]
 
 [node name="Game" type="Node2D" unique_id=714687722]
 y_sort_enabled = true
@@ -47,4 +49,12 @@ position = Vector2(-368, -154)
 position = Vector2(-317, -154)
 
 [node name="Oven" parent="." unique_id=42312829 instance=ExtResource("6_i6g32")]
-position = Vector2(-90, 0)
+position = Vector2(-198, -166)
+
+[node name="PointLight2D" type="PointLight2D" parent="Oven" unique_id=1661157314]
+position = Vector2(1.4999957, 58.500008)
+scale = Vector2(2.015625, 2.671875)
+color = Color(0.8260532, 0.24690503, 0, 1)
+shadow_enabled = true
+texture = ExtResource("7_v158k")
+script = ExtResource("8_h4fw4")
