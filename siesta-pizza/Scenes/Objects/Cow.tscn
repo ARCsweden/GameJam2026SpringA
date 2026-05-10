@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://drcqe6emntuv4"]
+[gd_scene format=3 uid="uid://boek4wtlndykh"]
 
 [ext_resource type="PackedScene" uid="uid://dxqttfqeuyp1i" path="res://Scenes/Objects/InteractableObject.tscn" id="1_4rptr"]
 [ext_resource type="Script" uid="uid://42fifgmrubvv" path="res://Scripts/cow.gd" id="2_ywkvi"]
@@ -19,8 +19,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_caliw"]
-radius = 12.0
-height = 48.0
+radius = 5.0
+height = 30.000002
 
 [node name="Cow" unique_id=1350623349 instance=ExtResource("1_4rptr")]
 script = ExtResource("2_ywkvi")
@@ -38,6 +38,7 @@ pitch_max = null
 play_sound_on_interact = null
 
 [node name="Sprite" parent="." index="2" unique_id=662202950]
+scale = Vector2(0.7109375, 0.7109375)
 sprite_frames = SubResource("SpriteFrames_xxx6f")
 animation = &"default"
 

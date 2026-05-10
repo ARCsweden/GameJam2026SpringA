@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bcum70vtwywe4" path="res://Assets/Art/Items/tomato.png" id="2_8lnrc"]
 
 [node name="Item" unique_id=805171685 instance=ExtResource("1_1ei6r")]
-item_id = "tomato"
+icon = ExtResource("2_8lnrc")
 
 [node name="Sprite" parent="." index="0" unique_id=1287651581]
 texture = ExtResource("2_8lnrc")

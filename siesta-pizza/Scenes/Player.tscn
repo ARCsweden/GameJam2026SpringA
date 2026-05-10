@@ -203,6 +203,7 @@ radius = 9.055386
 
 [node name="Player" type="CharacterBody2D" unique_id=2103131247]
 y_sort_enabled = true
+texture_filter = 1
 collision_mask = 3
 script = ExtResource("1_kyqiw")
 speed = 100
@@ -227,6 +228,18 @@ position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_gntrk")
 debug_color = Color(0.31299862, 0.6265178, 0, 0.41960785)
 
+
 [connection signal="frame_changed" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_frame_changed"]
+[node name="Sprite2DL" type="Sprite2D" parent="." unique_id=128928794]
+z_index = 5
+position = Vector2(-5, -22)
+scale = Vector2(0.25, 0.25)
+
+[node name="Sprite2DR" type="Sprite2D" parent="." unique_id=1664291977]
+z_index = 5
+position = Vector2(5, -22)
+scale = Vector2(0.25, 0.25)
+
+
 [connection signal="body_entered" from="Interact2D" to="." method="_on_interact_2d_body_entered"]
 [connection signal="body_exited" from="Interact2D" to="." method="_on_interact_2d_body_exited"]

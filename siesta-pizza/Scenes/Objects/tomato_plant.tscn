@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://b8dkn0tiuc00c"]
 
 [ext_resource type="PackedScene" uid="uid://dxqttfqeuyp1i" path="res://Scenes/Objects/InteractableObject.tscn" id="1_yddie"]
-[ext_resource type="PackedScene" uid="uid://dxjtir2bblx4r" path="res://Scenes/Items/tomato.tscn" id="2_v0jmr"]
+[ext_resource type="Script" uid="uid://cqteijhqwuxl5" path="res://Scripts/tomato_plant.gd" id="2_v0jmr"]
 [ext_resource type="Texture2D" uid="uid://cr1a4msnganmg" path="res://Assets/Art/Objects/tomato_object.png" id="2_ykgdm"]
-[ext_resource type="AudioStream" uid="uid://dbc44lc7paig2" path="res://Assets/Music/interact_tomato.mp3" id="3_k7w3j"]
+[ext_resource type="PackedScene" uid="uid://dxjtir2bblx4r" path="res://Scenes/Items/tomato.tscn" id="3_k7w3j"]
+[ext_resource type="AudioStream" uid="uid://dbc44lc7paig2" path="res://Assets/Music/interact_tomato.mp3" id="4_2dn5j"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v0jmr"]
 animations = [{
@@ -20,10 +21,10 @@ animations = [{
 radius = 5.0
 
 [node name="Tomato" unique_id=1350623349 instance=ExtResource("1_yddie")]
-interaction_name = "Tomato"
-item_to_give = ExtResource("2_v0jmr")
+script = ExtResource("2_v0jmr")
+item_to_give = ExtResource("3_k7w3j")
 processing_time = 1.0
-interaction_sound = ExtResource("3_k7w3j")
+interaction_sound = ExtResource("4_2dn5j")
 
 [node name="Sprite" parent="." index="2" unique_id=662202950]
 position = Vector2(1, -13)
