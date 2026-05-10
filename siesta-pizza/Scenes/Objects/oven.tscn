@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dxjtir2bblx4r" path="res://Scenes/Items/tomato.tscn" id="2_n8r5h"]
 [ext_resource type="PackedScene" uid="uid://5r6l7c6xlhix" path="res://Scenes/Items/milk.tscn" id="3_ur3qo"]
 [ext_resource type="Texture2D" uid="uid://bsw88np1qm2lt" path="res://Assets/Art/filler.svg" id="4_n8r5h"]
+[ext_resource type="Texture2D" uid="uid://bbhdidpvk8dus" path="res://Assets/Art/Items/milk.png" id="5_ur3qo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ur3qo"]
 animations = [{
@@ -29,6 +30,11 @@ parallelism = true
 scale = Vector2(0.25390625, 0.25390625)
 sprite_frames = SubResource("SpriteFrames_ur3qo")
 animation = &"default"
+
+[node name="ItemSprite" parent="." index="3" unique_id=339095134]
+position = Vector2(0, -20)
+scale = Vector2(0.32500005, 0.32500005)
+texture = ExtResource("5_ur3qo")
 
 [node name="Collision" parent="Body" parent_id_path=PackedInt32Array(1925049183) index="0" unique_id=738313803]
 shape = SubResource("RectangleShape2D_qkp4g")
