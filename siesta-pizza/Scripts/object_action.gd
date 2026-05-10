@@ -151,13 +151,16 @@ func _process(delta):
 		_next_idle_time = randf_range(idle_min_delay, idle_max_delay)
 		
 	_idle_timer += delta
-
+	if processing_time == 0.0:
+		is_processing = false
+		return
 	if is_processing:
 		processing_timer += delta
 
 		if processing_timer >= processing_time:
 			is_processing = false
-			storage_out = item_to_give.instantiate()
+			if item_to_give != null:
+				storage_out = item_to_give.instantiate()
 			is_source = true
 			storage_in_empty = true;
 			storage_out_empty = false

@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://b8dkn0tiuc00c" path="res://Scenes/Objects/tomato_plant.tscn" id="4_wowpa"]
 [ext_resource type="PackedScene" uid="uid://dcigmo516jm40" path="res://Scenes/Objects/oven.tscn" id="6_i6g32"]
 [ext_resource type="PackedScene" uid="uid://cd6ecn5jcaabn" path="res://Scenes/Objects/dough_plant.tscn" id="7_1l0tm"]
-[ext_resource type="PackedScene" uid="uid://bvglbx7xmay33" path="res://Scenes/Items/dough.tscn" id="8_v158k"]
+[ext_resource type="PackedScene" uid="uid://crn87333op6nw" path="res://Scenes/Objects/pizza_combinator.tscn" id="8_v158k"]
+[ext_resource type="PackedScene" uid="uid://bndgefeqqs0ey" path="res://Scenes/Objects/Trashcan.tscn" id="9_h4fw4"]
 
 [node name="Game" type="Node2D" unique_id=714687722]
 y_sort_enabled = true
@@ -53,4 +54,9 @@ position = Vector2(-90, 0)
 
 [node name="Object2" parent="." unique_id=14134712 instance=ExtResource("7_1l0tm")]
 position = Vector2(-198, -74)
-item_to_give = ExtResource("8_v158k")
+
+[node name="Object3" parent="." unique_id=34517216 instance=ExtResource("8_v158k")]
+position = Vector2(-280, -82)
+
+[node name="Object4" parent="." unique_id=1417834632 instance=ExtResource("9_h4fw4")]
+position = Vector2(-364, -4)
