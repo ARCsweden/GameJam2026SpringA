@@ -21,7 +21,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_bdqox"]
 radius = 5.0990195
 
-[node name="Object2" unique_id=1350623349 instance=ExtResource("1_qyoo7")]
+[node name="Dough" unique_id=1350623349 instance=ExtResource("1_qyoo7")]
 script = ExtResource("2_rvnl8")
 item_to_give = ExtResource("3_lfmbf")
 
