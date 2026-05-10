@@ -2,9 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://dxqttfqeuyp1i" path="res://Scenes/Objects/InteractableObject.tscn" id="1_eo5vf"]
 [ext_resource type="PackedScene" uid="uid://dxjtir2bblx4r" path="res://Scenes/Items/tomato.tscn" id="2_n8r5h"]
-[ext_resource type="PackedScene" uid="uid://5r6l7c6xlhix" path="res://Scenes/Items/milk.tscn" id="3_ur3qo"]
+[ext_resource type="PackedScene" uid="uid://ciw6yqqb5rtt0" path="res://Scenes/Items/pizza_cooked.tscn" id="3_3yvln"]
 [ext_resource type="Texture2D" uid="uid://3ahd65a8dog6" path="res://Assets/Art/pizzatest.png" id="4_n8r5h"]
-[ext_resource type="Shader" uid="uid://bydn38w6jxypk" path="res://Scenes/Objects/oven.gdshader" id="5_qkp4g"]
+[ext_resource type="Texture2D" uid="uid://7y6rv2kpwi36" path="res://Assets/Art/Items/pizza_cooked.png" id="5_3yvln"]
+[ext_resource type="Shader" path="res://Scenes/Objects/oven.gdshader" id="5_qkp4g"]
 [ext_resource type="Texture2D" uid="uid://bbckwst1svocv" path="res://icon.svg" id="6_fihkv"]
 [ext_resource type="Texture2D" uid="uid://clrliqoeh6uew" path="res://Assets/Art/bars.png" id="7_fihkv"]
 
@@ -23,9 +24,6 @@ animations = [{
 "name": &"new_animation",
 "speed": 5.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qkp4g"]
-size = Vector2(21, 39)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3yvln"]
 shader = ExtResource("5_qkp4g")
@@ -56,10 +54,13 @@ shader_parameter/posOffset = Vector2(0, -0.5)
 shader_parameter/ovenWidth = 1.25
 shader_parameter/ovenHeight = 0.62
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qkp4g"]
+size = Vector2(21, 39)
+
 [node name="Oven" unique_id=1350623349 instance=ExtResource("1_eo5vf")]
 interaction_name = "Oven"
 accepted_input = ExtResource("2_n8r5h")
-item_to_give = ExtResource("3_ur3qo")
+item_to_give = ExtResource("3_3yvln")
 parallelism = true
 
 [node name="Sprite" parent="." index="2" unique_id=662202950]
@@ -68,13 +69,9 @@ sprite_frames = SubResource("SpriteFrames_ur3qo")
 animation = &"default"
 
 [node name="ItemSprite" parent="." index="3" unique_id=339095134]
-position = Vector2(0, -20)
-scale = Vector2(0.32500005, 0.32500005)
-texture = ExtResource("5_ur3qo")
-
-[node name="Collision" parent="Body" parent_id_path=PackedInt32Array(1925049183) index="0" unique_id=738313803]
-position = Vector2(0.5, 13.5)
-shape = SubResource("RectangleShape2D_qkp4g")
+position = Vector2(0, -31)
+scale = Vector2(0.10000003, 0.10000003)
+texture = ExtResource("5_3yvln")
 
 [node name="fire" type="Sprite2D" parent="." index="4" unique_id=266308125]
 material = SubResource("ShaderMaterial_3yvln")
@@ -85,3 +82,7 @@ texture = ExtResource("6_fihkv")
 [node name="Sprite2D" type="Sprite2D" parent="." index="5" unique_id=319819681]
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("7_fihkv")
+
+[node name="Collision" parent="Body" parent_id_path=PackedInt32Array(1925049183) index="0" unique_id=738313803]
+position = Vector2(0.5, 13.5)
+shape = SubResource("RectangleShape2D_qkp4g")
