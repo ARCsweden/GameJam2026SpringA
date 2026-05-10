@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://boek4wtlndykh" path="res://Scenes/Objects/Cow.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://b8dkn0tiuc00c" path="res://Scenes/Objects/tomato_plant.tscn" id="4_wowpa"]
 [ext_resource type="PackedScene" uid="uid://dcigmo516jm40" path="res://Scenes/Objects/oven.tscn" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://cd6ecn5jcaabn" path="res://Scenes/Objects/dough_plant.tscn" id="7_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://bvglbx7xmay33" path="res://Scenes/Items/dough.tscn" id="8_v158k"]
 
 [node name="Game" type="Node2D" unique_id=714687722]
 y_sort_enabled = true
@@ -48,3 +50,7 @@ position = Vector2(-317, -154)
 
 [node name="Oven" parent="." unique_id=42312829 instance=ExtResource("6_i6g32")]
 position = Vector2(-90, 0)
+
+[node name="Object2" parent="." unique_id=14134712 instance=ExtResource("7_1l0tm")]
+position = Vector2(-198, -74)
+item_to_give = ExtResource("8_v158k")
