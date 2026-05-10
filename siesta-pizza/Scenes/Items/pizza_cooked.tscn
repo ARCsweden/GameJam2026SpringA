@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ciw6yqqb5rtt0"]
+
+[ext_resource type="PackedScene" uid="uid://bbxxifrsgv3k6" path="res://Scenes/Items/item.tscn" id="1_uc35i"]
+[ext_resource type="Texture2D" uid="uid://7y6rv2kpwi36" path="res://Assets/Art/Items/pizza_cooked.png" id="2_h0m3k"]
+
+[node name="Item" unique_id=805171685 instance=ExtResource("1_uc35i")]
+item_name = "pizza_cooked"
+icon = ExtResource("2_h0m3k")
+
+[node name="Sprite" parent="." index="0" unique_id=1287651581]
+texture = ExtResource("2_h0m3k")

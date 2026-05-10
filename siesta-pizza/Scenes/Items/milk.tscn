@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bbhdidpvk8dus" path="res://Assets/Art/Items/milk.png" id="2_kqweo"]
 
 [node name="Item" unique_id=805171685 instance=ExtResource("1_1yrll")]
-item_name = "Milk"
+item_name = "milk"
 icon = ExtResource("2_kqweo")
 
 [node name="Sprite" parent="." index="0" unique_id=1287651581]

@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bndt6e4lpftu6"]
 
 [ext_resource type="TileSet" uid="uid://dgjhoa7hkpjty" path="res://Assets/Art/TileSet.tres" id="1_a02cp"]
-[ext_resource type="Script" uid="uid://cfc3ci1lmbru8" path="res://Scenes/floor.gd" id="2_go701"]
+[ext_resource type="Script" path="res://Scenes/floor.gd" id="2_go701"]
 
 [node name="World" type="Node2D" unique_id=1441224925]
 

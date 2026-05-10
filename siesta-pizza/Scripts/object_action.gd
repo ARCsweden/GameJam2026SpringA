@@ -65,17 +65,24 @@ func interact(player, item: Item):
 		print_debug("Producer providing item to player")
 		_give_item(player, storage_out)
 		storage_out_empty = true
+		$ItemSprite.visible = false;
+		return
 	else:
 		if (storage_in != null):
-			if(storage_in.item_name == item.item_name):
+			if(item != null && storage_in.item_name == item.item_name):
 				_take_item(player)
 			else:
+				print_debug("Incorrect / missing item")
 				return
 			
 		print_debug("Starting processing")
 		is_processing = true
 		processing_timer = 0.0
 		
+		if play_sound_on_interact and interaction_sound:
+			audio.stream = interaction_sound
+			audio.pitch_scale = randf_range(pitch_min, pitch_max)
+			audio.play()
 		
 		
 	#if storage_out != null:
@@ -90,10 +97,7 @@ func interact(player, item: Item):
 		#processing_timer = 0.0
 		#pending_player = player
 		
-	if play_sound_on_interact and interaction_sound:
-		audio.stream = interaction_sound
-		audio.pitch_scale = randf_range(pitch_min, pitch_max)
-		audio.play()
+
 			
 	interact_extra(player, item)
 	
@@ -108,8 +112,10 @@ func set_highlight(enabled: bool):
 
 func _give_item(player, item):
 	player.add_item(item)
-	storage_out_empty = true;	
-	is_source = false
+	storage_out_empty = true;
+	$ItemSprite.visible = false;
+	if processing_time != 0.0:
+		is_source = false
 	
 	
 func _take_item(player):
@@ -134,6 +140,8 @@ func _ready():
 	if sprite.sprite_frames.has_animation("idle"):
 		sprite.play("idle")
 		
+	$ItemSprite.visible = false;
+		
 func _process(delta):
 
 	_idle_timer += delta
@@ -146,16 +154,20 @@ func _process(delta):
 		_next_idle_time = randf_range(idle_min_delay, idle_max_delay)
 		
 	_idle_timer += delta
-
+	if processing_time == 0.0:
+		is_processing = false
+		return
 	if is_processing:
 		processing_timer += delta
 
 		if processing_timer >= processing_time:
 			is_processing = false
-			storage_out = item_to_give.instantiate()
+			if item_to_give != null:
+				storage_out = item_to_give.instantiate()
 			is_source = true
 			storage_in_empty = true;
 			storage_out_empty = false
+			$ItemSprite.visible = true;
 			print_debug("Processing completed")
 			pending_player = null
 			

@@ -228,8 +228,6 @@ position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_gntrk")
 debug_color = Color(0.31299862, 0.6265178, 0, 0.41960785)
 
-
-[connection signal="frame_changed" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_frame_changed"]
 [node name="Sprite2DL" type="Sprite2D" parent="." unique_id=128928794]
 z_index = 5
 position = Vector2(-5, -22)
@@ -240,6 +238,6 @@ z_index = 5
 position = Vector2(5, -22)
 scale = Vector2(0.25, 0.25)
 
-
+[connection signal="frame_changed" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_frame_changed"]
 [connection signal="body_entered" from="Interact2D" to="." method="_on_interact_2d_body_entered"]
 [connection signal="body_exited" from="Interact2D" to="." method="_on_interact_2d_body_exited"]

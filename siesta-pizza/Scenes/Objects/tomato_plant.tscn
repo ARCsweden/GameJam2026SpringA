@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cr1a4msnganmg" path="res://Assets/Art/Objects/tomato_object.png" id="2_ykgdm"]
 [ext_resource type="PackedScene" uid="uid://dxjtir2bblx4r" path="res://Scenes/Items/tomato.tscn" id="3_k7w3j"]
 [ext_resource type="AudioStream" uid="uid://dbc44lc7paig2" path="res://Assets/Music/interact_tomato.mp3" id="4_2dn5j"]
+[ext_resource type="Texture2D" uid="uid://bcum70vtwywe4" path="res://Assets/Art/Items/tomato.png" id="6_pjmp6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v0jmr"]
 animations = [{
@@ -29,6 +30,12 @@ interaction_sound = ExtResource("4_2dn5j")
 [node name="Sprite" parent="." index="2" unique_id=662202950]
 position = Vector2(1, -13)
 sprite_frames = SubResource("SpriteFrames_v0jmr")
+
+[node name="ItemSprite" parent="." index="3" unique_id=339095134]
+visible = true
+position = Vector2(0, -33)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_pjmp6")
 
 [node name="Collision" parent="Body" parent_id_path=PackedInt32Array(1925049183) index="0" unique_id=738313803]
 shape = SubResource("CircleShape2D_ykgdm")

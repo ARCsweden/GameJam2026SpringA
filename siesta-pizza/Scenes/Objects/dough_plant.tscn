@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cd6ecn5jcaabn"]
+
+[ext_resource type="PackedScene" uid="uid://dxqttfqeuyp1i" path="res://Scenes/Objects/InteractableObject.tscn" id="1_qyoo7"]
+[ext_resource type="Script" uid="uid://l6w3ie1bd62" path="res://Scripts/dough_plant.gd" id="2_rvnl8"]
+[ext_resource type="Texture2D" uid="uid://xji6vt5etgxj" path="res://Assets/Art/Objects/dough_object.png" id="2_s7tof"]
+[ext_resource type="AudioStream" uid="uid://dbc44lc7paig2" path="res://Assets/Music/interact_tomato.mp3" id="3_bdqox"]
+[ext_resource type="PackedScene" uid="uid://bvglbx7xmay33" path="res://Scenes/Items/dough.tscn" id="3_lfmbf"]
+[ext_resource type="Texture2D" uid="uid://c8hcxmfxo85bj" path="res://Assets/Art/Items/dough.png" id="6_lfmbf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rvnl8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s7tof")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bdqox"]
+radius = 5.0990195
+
+[node name="Object2" unique_id=1350623349 instance=ExtResource("1_qyoo7")]
+script = ExtResource("2_rvnl8")
+item_to_give = ExtResource("3_lfmbf")
+
+[node name="Audio" parent="." index="0" unique_id=462252010]
+stream = ExtResource("3_bdqox")
+
+[node name="Sprite" parent="." index="2" unique_id=662202950]
+sprite_frames = SubResource("SpriteFrames_rvnl8")
+
+[node name="ItemSprite" parent="." index="3" unique_id=339095134]
+position = Vector2(0, -21)
+texture = ExtResource("6_lfmbf")
+
+[node name="Collision" parent="Body" parent_id_path=PackedInt32Array(1925049183) index="0" unique_id=738313803]
+position = Vector2(-1, 14)
+shape = SubResource("CircleShape2D_bdqox")
