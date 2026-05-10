@@ -30,6 +30,9 @@ material = SubResource("ShaderMaterial_w0aqa")
 sprite_frames = SubResource("SpriteFrames_awgt1")
 animation = &"idle"
 
+[node name="ItemSprite" type="Sprite2D" parent="." unique_id=339095134]
+z_index = 5
+
 [node name="Body" type="StaticBody2D" parent="." unique_id=1925049183]
 collision_layer = 6
 

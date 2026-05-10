@@ -65,11 +65,13 @@ func interact(player, item: Item):
 		print_debug("Producer providing item to player")
 		_give_item(player, storage_out)
 		storage_out_empty = true
+		$ItemSprite.visible = false;
 	else:
 		if (storage_in != null):
-			if(storage_in.item_name == item.item_name):
+			if(item != null && storage_in.item_name == item.item_name):
 				_take_item(player)
 			else:
+				print_debug("Incorrect / missing item")
 				return
 			
 		print_debug("Starting processing")
@@ -108,7 +110,8 @@ func set_highlight(enabled: bool):
 
 func _give_item(player, item):
 	player.add_item(item)
-	storage_out_empty = true;	
+	storage_out_empty = true;
+	$ItemSprite.visible = false;
 	is_source = false
 	
 	
@@ -134,6 +137,8 @@ func _ready():
 	if sprite.sprite_frames.has_animation("idle"):
 		sprite.play("idle")
 		
+	$ItemSprite.visible = false;
+		
 func _process(delta):
 
 	_idle_timer += delta
@@ -156,6 +161,7 @@ func _process(delta):
 			is_source = true
 			storage_in_empty = true;
 			storage_out_empty = false
+			$ItemSprite.visible = true;
 			print_debug("Processing completed")
 			pending_player = null
 			
