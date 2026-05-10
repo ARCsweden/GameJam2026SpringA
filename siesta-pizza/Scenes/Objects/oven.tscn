@@ -25,9 +25,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qkp4g"]
-size = Vector2(21, 39)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fihkv"]
 shader = ExtResource("5_qkp4g")
 shader_parameter/speed = 0.7
@@ -72,7 +69,7 @@ sprite_frames = SubResource("SpriteFrames_ur3qo")
 animation = &"default"
 
 [node name="ItemSprite" parent="." index="3" unique_id=339095134]
-position = Vector2(0, -31)
+position = Vector2(0, 17)
 scale = Vector2(0.10000003, 0.10000003)
 texture = ExtResource("5_3yvln")
 
