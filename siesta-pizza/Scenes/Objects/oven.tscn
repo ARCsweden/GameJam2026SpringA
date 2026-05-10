@@ -3,8 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://dxqttfqeuyp1i" path="res://Scenes/Objects/InteractableObject.tscn" id="1_eo5vf"]
 [ext_resource type="PackedScene" uid="uid://dxjtir2bblx4r" path="res://Scenes/Items/tomato.tscn" id="2_n8r5h"]
 [ext_resource type="PackedScene" uid="uid://5r6l7c6xlhix" path="res://Scenes/Items/milk.tscn" id="3_ur3qo"]
-[ext_resource type="Texture2D" uid="uid://bsw88np1qm2lt" path="res://Assets/Art/filler.svg" id="4_n8r5h"]
-[ext_resource type="Texture2D" uid="uid://bbhdidpvk8dus" path="res://Assets/Art/Items/milk.png" id="5_ur3qo"]
+[ext_resource type="Texture2D" uid="uid://3ahd65a8dog6" path="res://Assets/Art/pizzatest.png" id="4_n8r5h"]
+[ext_resource type="Shader" uid="uid://bydn38w6jxypk" path="res://Scenes/Objects/oven.gdshader" id="5_qkp4g"]
+[ext_resource type="Texture2D" uid="uid://bbckwst1svocv" path="res://icon.svg" id="6_fihkv"]
+[ext_resource type="Texture2D" uid="uid://clrliqoeh6uew" path="res://Assets/Art/bars.png" id="7_fihkv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ur3qo"]
 animations = [{
@@ -15,10 +17,44 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qkp4g"]
-size = Vector2(32, 32)
+size = Vector2(21, 39)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3yvln"]
+shader = ExtResource("5_qkp4g")
+shader_parameter/speed = 1.0
+shader_parameter/pixelSize = 0.015
+shader_parameter/alpha = 0.95
+shader_parameter/flickerStrength = 0.15
+shader_parameter/fromColor = Color(0.9, 0.2, 0.1, 1)
+shader_parameter/toColor = Color(0.4, 0.35, 0.2, 1)
+shader_parameter/coreColor = Color(1, 0.85, 0.25, 1)
+shader_parameter/hueShift = 0.0
+shader_parameter/saturationFactor = 1.0
+shader_parameter/particleCount = 128.0
+shader_parameter/size = Vector2(0.05, 0.75)
+shader_parameter/fireShift = 0.15
+shader_parameter/fireShiftFrequency = 5.0
+shader_parameter/sparkCount = 18.0
+shader_parameter/sparkSize = 0.004
+shader_parameter/sparkSpeed = 0.15
+shader_parameter/sparkColor = Color(1, 0.7, 0, 1)
+shader_parameter/smokeCount = 20.0
+shader_parameter/smokeSize = 0.015
+shader_parameter/smokeDrift = 0.2
+shader_parameter/smokeColor = Color(0.05, 0.05, 0.05, 1)
+shader_parameter/windForce = 0.0
+shader_parameter/aspectRatio = 1.0
+shader_parameter/posOffset = Vector2(0, -0.5)
+shader_parameter/ovenWidth = 1.25
+shader_parameter/ovenHeight = 0.62
 
 [node name="Oven" unique_id=1350623349 instance=ExtResource("1_eo5vf")]
 interaction_name = "Oven"
@@ -27,7 +63,7 @@ item_to_give = ExtResource("3_ur3qo")
 parallelism = true
 
 [node name="Sprite" parent="." index="2" unique_id=662202950]
-scale = Vector2(0.25390625, 0.25390625)
+scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_ur3qo")
 animation = &"default"
 
@@ -37,4 +73,15 @@ scale = Vector2(0.32500005, 0.32500005)
 texture = ExtResource("5_ur3qo")
 
 [node name="Collision" parent="Body" parent_id_path=PackedInt32Array(1925049183) index="0" unique_id=738313803]
+position = Vector2(0.5, 13.5)
 shape = SubResource("RectangleShape2D_qkp4g")
+
+[node name="fire" type="Sprite2D" parent="." index="4" unique_id=266308125]
+material = SubResource("ShaderMaterial_3yvln")
+position = Vector2(0, -1.999999)
+scale = Vector2(0.54687506, 0.44921875)
+texture = ExtResource("6_fihkv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="5" unique_id=319819681]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("7_fihkv")

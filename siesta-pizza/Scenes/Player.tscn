@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cwla73s15k0qh" path="res://Scripts/player.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://ch6wjgeywtste" path="res://Assets/Art/Player/Character/Idle.png" id="2_gntrk"]
 [ext_resource type="Texture2D" uid="uid://pi2bip7t7rm3" path="res://Assets/Art/Player/Character/Walk.png" id="3_dewec"]
+[ext_resource type="Script" uid="uid://iuc3egatewmu" path="res://Scenes/animated_sprite_2d.gd" id="4_dewec"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gntrk"]
 radius = 3.4950001
@@ -148,7 +149,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_down",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -171,7 +172,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_right",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -194,7 +195,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_up",
-"speed": 5.0
+"speed": 2.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gntrk"]
@@ -216,8 +217,8 @@ shape = SubResource("CapsuleShape2D_gntrk")
 texture_filter = 1
 position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_8flut")
-animation = &"idle_down"
-frame_progress = 0.1353486
+animation = &"walk_up"
+script = ExtResource("4_dewec")
 
 [node name="Interact2D" type="Area2D" parent="." unique_id=1692669902]
 collision_mask = 4
@@ -227,6 +228,8 @@ position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_gntrk")
 debug_color = Color(0.31299862, 0.6265178, 0, 0.41960785)
 
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_frame_changed"]
 [node name="Sprite2DL" type="Sprite2D" parent="." unique_id=128928794]
 z_index = 5
 position = Vector2(-5, -22)
@@ -236,6 +239,7 @@ scale = Vector2(0.25, 0.25)
 z_index = 5
 position = Vector2(5, -22)
 scale = Vector2(0.25, 0.25)
+
 
 [connection signal="body_entered" from="Interact2D" to="." method="_on_interact_2d_body_entered"]
 [connection signal="body_exited" from="Interact2D" to="." method="_on_interact_2d_body_exited"]
