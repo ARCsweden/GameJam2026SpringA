@@ -2,5 +2,7 @@ extends InteractableObject
 
 # Called when the node enters the scene tree for the first time.
 func interact_extra(player, item):
-	print_debug("Cow interacted")
-	pass # Replace with function body.
+	if item != null:
+		player.remove_item()
+	print_debug("Trashcan interacted")
+	

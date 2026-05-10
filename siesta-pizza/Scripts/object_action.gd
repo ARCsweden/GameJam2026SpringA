@@ -1,8 +1,6 @@
 class_name InteractableObject
 extends Node2D
 
-signal interact_finished(item, player)
-
 @onready var sprite: AnimatedSprite2D  = $Sprite
 @onready var idle_audio: AudioStreamPlayer2D = $IdleAudio
 @onready var audio: AudioStreamPlayer2D = $Audio
@@ -15,8 +13,11 @@ signal interact_finished(item, player)
 @export var processing_time: float = 2.0
 @export var parallelism  = false
 
-var storage_in: PackedScene
-var storage_out: PackedScene
+var storage_in: Item = null
+var storage_out: Item = null
+var storage_in_empty:bool = true
+var storage_out_empty:bool = true
+
 
 #AudioPlayer
 @export var idle_sounds: Array[AudioStream]
@@ -46,32 +47,55 @@ var pending_player = null
 var is_source := false
 
 
-func interact_extra(player):
+func interact_extra(player, item: Item):
 	pass
 
-func interact(player, item):
+func interact(player, item: Item):
 	
 	if is_processing:
+		print_debug("Still processing, chill the fuck out")
 		return
-		
-	if storage_out != null:
+	
+	# If idle, accept item and start processing.
+	# Ignore if still processing
+	# When processing is done, add item to output
+	# If done, give item to player and set to empty
+	
+	if (!storage_out_empty):
+		print_debug("Producer providing item to player")
 		_give_item(player, storage_out)
-
-	if processing_time > 0.0:
-		if accepted_input.item_id != "":
-			_take_item(player)
-		else:
-			is_source = true
+		storage_out_empty = true
+	else:
+		if (storage_in != null):
+			if(storage_in.item_name == item.item_name):
+				_take_item(player)
+			else:
+				return
+			
+		print_debug("Starting processing")
 		is_processing = true
 		processing_timer = 0.0
-		pending_player = player
+		
+		
+		
+	#if storage_out != null:
+		#print_debug("Producer providing item to player")
+		#_give_item(player, storage_out)
+	#elif processing_time > 0.0:
+		#if storage_in.item_name == item.item_name:
+			#_take_item(player)
+		#else:
+			#is_source = true
+		#is_processing = true
+		#processing_timer = 0.0
+		#pending_player = player
 		
 	if play_sound_on_interact and interaction_sound:
 		audio.stream = interaction_sound
 		audio.pitch_scale = randf_range(pitch_min, pitch_max)
 		audio.play()
 			
-	interact_extra(player)
+	interact_extra(player, item)
 	
 func set_highlight(enabled: bool):
 
@@ -83,17 +107,22 @@ func set_highlight(enabled: bool):
 		material.set_shader_parameter("enabled", enabled)
 
 func _give_item(player, item):
-
-	player.add_item(item_to_give)
-	storage_out = null;	
+	player.add_item(item)
+	storage_out_empty = true;	
 	is_source = false
 	
 	
 func _take_item(player):
-	storage_in = player.remove_item()
+	player.remove_item()
 	
 	
 func _ready():
+	if(accepted_input != null):
+		storage_in = accepted_input.instantiate()
+
+		
+	if(item_to_give != null):
+		storage_out = item_to_give.instantiate()
 	
 	if sprite.material:
 		sprite.material = sprite.material.duplicate()
@@ -123,10 +152,11 @@ func _process(delta):
 
 		if processing_timer >= processing_time:
 			is_processing = false
-			storage_out = item_to_give
+			storage_out = item_to_give.instantiate()
 			is_source = true
-			storage_in = null;
-			emit_signal("interact_finished", item_to_give, pending_player)
+			storage_in_empty = true;
+			storage_out_empty = false
+			print_debug("Processing completed")
 			pending_player = null
 			
 
