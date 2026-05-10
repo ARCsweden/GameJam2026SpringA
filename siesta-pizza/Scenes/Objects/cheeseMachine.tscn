@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bis2dh5cdyfpq"]
+
+[ext_resource type="PackedScene" uid="uid://dxqttfqeuyp1i" path="res://Scenes/Objects/InteractableObject.tscn" id="1_n0nqc"]
+[ext_resource type="PackedScene" uid="uid://5r6l7c6xlhix" path="res://Scenes/Items/milk.tscn" id="2_6nxw5"]
+[ext_resource type="PackedScene" uid="uid://y4ccjd26ooxa" path="res://Scenes/Items/cheese.tscn" id="3_btm7j"]
+[ext_resource type="Texture2D" uid="uid://b4y20pkyxlkjy" path="res://Assets/Art/Objects/mjolkmaskin.png" id="4_6k7ue"]
+[ext_resource type="AudioStream" uid="uid://bv4qcteu0epxe" path="res://Assets/Music/making_cheese.mp3" id="4_pin1m"]
+[ext_resource type="Texture2D" uid="uid://bdtib1serpuo6" path="res://Assets/Art/Items/cheese.png" id="5_btm7j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pin1m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_6k7ue")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5qq1"]
+size = Vector2(10, 24)
+
+[node name="CheeseMachine" unique_id=1350623349 instance=ExtResource("1_n0nqc")]
+accepted_input = ExtResource("2_6nxw5")
+item_to_give = ExtResource("3_btm7j")
+processing_time = 25.0
+interaction_sound = ExtResource("4_pin1m")
+
+[node name="Sprite" parent="." index="2" unique_id=662202950]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_pin1m")
+animation = &"default"
+
+[node name="ItemSprite" parent="." index="3" unique_id=339095134]
+position = Vector2(-1.1368684e-13, -25)
+scale = Vector2(0.34375, 0.34375)
+texture = ExtResource("5_btm7j")
+
+[node name="Collision" parent="Body" parent_id_path=PackedInt32Array(1925049183) index="0" unique_id=738313803]
+position = Vector2(-2.3841858e-07, 12)
+shape = SubResource("RectangleShape2D_w5qq1")
