@@ -3,8 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://duo2g7ybwiker" path="res://Scenes/Player.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://bndt6e4lpftu6" path="res://Scenes/world.tscn" id="1_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://dj200wxofw7ns" path="res://Scenes/Lighting.tscn" id="1_wowpa"]
-[ext_resource type="PackedScene" uid="uid://boek4wtlndykh" path="res://Scenes/Objects/Cow.tscn" id="3_wrm1d"]
-[ext_resource type="PackedScene" path="res://Scenes/Objects/tomato_plant.tscn" id="4_wowpa"]
+[ext_resource type="PackedScene" uid="uid://drcqe6emntuv4" path="res://Scenes/Objects/Cow.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://b8dkn0tiuc00c" path="res://Scenes/Objects/tomato_plant.tscn" id="4_wowpa"]
+
+[sub_resource type="Environment" id="Environment_wowpa"]
+background_mode = 3
+background_energy_multiplier = 1.33
+background_canvas_max_layer = 8
+glow_enabled = true
+glow_intensity = 2.12
+glow_hdr_threshold = 0.51
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_wowpa"]
+exposure_multiplier = 3.077
 
 [node name="Game" type="Node2D" unique_id=714687722]
 y_sort_enabled = true
@@ -19,6 +30,7 @@ y_sort_enabled = true
 speed = 90
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=452552090]
+visible = false
 position = Vector2(0, -3)
 zoom = Vector2(4, 4)
 limit_left = -400
@@ -43,3 +55,7 @@ position = Vector2(-368, -154)
 
 [node name="Tomato2" parent="." unique_id=1595038453 instance=ExtResource("4_wowpa")]
 position = Vector2(-317, -154)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1181322315]
+environment = SubResource("Environment_wowpa")
+camera_attributes = SubResource("CameraAttributesPractical_wowpa")

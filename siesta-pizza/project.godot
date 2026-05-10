@@ -15,6 +15,10 @@ run/main_scene="uid://h32oq7wkmjx0"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+FootstepManager="*uid://djlndxx646nwf"
+
 [input]
 
 Left={
@@ -69,3 +73,4 @@ Down={
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+viewport/hdr_2d=true
