@@ -17,7 +17,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qkp4g"]
-size = Vector2(117.00001, 109.99999)
+size = Vector2(32, 32)
 
 [node name="Oven" unique_id=1350623349 instance=ExtResource("1_eo5vf")]
 interaction_name = "Oven"
@@ -26,9 +26,9 @@ item_to_give = ExtResource("3_ur3qo")
 parallelism = true
 
 [node name="Sprite" parent="." index="2" unique_id=662202950]
+scale = Vector2(0.25390625, 0.25390625)
 sprite_frames = SubResource("SpriteFrames_ur3qo")
 animation = &"default"
 
 [node name="Collision" parent="Body" parent_id_path=PackedInt32Array(1925049183) index="0" unique_id=738313803]
-position = Vector2(-1, -0.5000019)
 shape = SubResource("RectangleShape2D_qkp4g")

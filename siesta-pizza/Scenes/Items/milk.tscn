@@ -2,9 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://bbxxifrsgv3k6" path="res://Scenes/Items/item.tscn" id="1_1yrll"]
 [ext_resource type="Texture2D" uid="uid://cf5povsom60pw" path="res://Assets/Art/Items/milk.jpg" id="2_f7tjq"]
+[ext_resource type="Texture2D" uid="uid://bbhdidpvk8dus" path="res://Assets/Art/Items/milk.png" id="2_kqweo"]
 
 [node name="Item" unique_id=805171685 instance=ExtResource("1_1yrll")]
-item_id = "milk"
+item_name = "Milk"
+icon = ExtResource("2_kqweo")
 
 [node name="Sprite" parent="." index="0" unique_id=1287651581]
 texture = ExtResource("2_f7tjq")
