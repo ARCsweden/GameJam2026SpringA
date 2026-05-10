@@ -25,7 +25,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qkp4g"]
-size = Vector2(52, 89)
+size = Vector2(21, 39)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3yvln"]
 shader = ExtResource("5_qkp4g")
@@ -63,20 +63,20 @@ item_to_give = ExtResource("3_ur3qo")
 parallelism = true
 
 [node name="Sprite" parent="." index="2" unique_id=662202950]
-scale = Vector2(0.11, 0.11)
+scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_ur3qo")
 animation = &"default"
 
 [node name="Collision" parent="Body" parent_id_path=PackedInt32Array(1925049183) index="0" unique_id=738313803]
-position = Vector2(0.50000125, 28)
+position = Vector2(0.5, 13.5)
 shape = SubResource("RectangleShape2D_qkp4g")
 
 [node name="fire" type="Sprite2D" parent="." index="4" unique_id=266308125]
 material = SubResource("ShaderMaterial_3yvln")
-position = Vector2(-1, 13)
+position = Vector2(0, -1.999999)
 scale = Vector2(0.54687506, 0.44921875)
 texture = ExtResource("6_fihkv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="5" unique_id=319819681]
-scale = Vector2(0.11, 0.11)
+scale = Vector2(0.05, 0.05)
 texture = ExtResource("7_fihkv")
