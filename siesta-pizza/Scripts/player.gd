@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 @export var speed = 90
 
+var packed_scene: PackedScene = preload("res://Scenes/Items/milk.tscn")
+var scene_root = packed_scene.instantiate()
+
 var heldItemL: PackedScene
 var heldItemR: PackedScene
 
@@ -14,6 +17,8 @@ func add_item(item: PackedScene):
 	
 	if(lastInteractL and !heldItemL):
 		heldItemL = item
+		var sprite: Sprite2D = scene_root.get_node("Sprite")
+		$Sprite2DL.texture = sprite.texture
 		
 	if(lastInteractR and !heldItemR):
 		heldItemR = item
@@ -33,8 +38,6 @@ func remove_item() -> PackedScene:
 		
 	else:
 		return null
-	
-	
 	
 func get_input():
 	var input_direction = Input.get_vector("Left", "Right", "Up", "Down")
