@@ -10,9 +10,13 @@ signal interact_finished(item, player)
 @export var interaction_name: String = "Interact"
 @export var highlight_color: Color = Color(1.4, 1.4, 0.0, 1.0)
 
+@export var accepted_input: PackedScene
 @export var item_to_give: PackedScene
 @export var processing_time: float = 2.0
 @export var parallelism  = false
+
+var storage_in: PackedScene
+var storage_out: PackedScene
 
 #AudioPlayer
 @export var idle_sounds: Array[AudioStream]
@@ -36,38 +40,58 @@ var is_processing := false
 var _idle_timer := 0.0
 var _next_idle_time := 0.0
 
-
 var processing_timer := 0.0
 var pending_player = null
+
+var is_source := false
+
 
 func interact_extra(player):
 	pass
 
-func interact(player):
+func interact(player, item):
 	
 	if is_processing:
 		return
+		
+	if storage_out != null:
+		_give_item(player, storage_out)
+
+	if processing_time > 0.0:
+		if accepted_input.item_id != "":
+			_take_item(player)
+		else:
+			is_source = true
+		is_processing = true
+		processing_timer = 0.0
+		pending_player = player
 		
 	if play_sound_on_interact and interaction_sound:
 		audio.stream = interaction_sound
 		audio.pitch_scale = randf_range(pitch_min, pitch_max)
 		audio.play()
-
-	if processing_time > 0.0:
-		is_processing = true
-		processing_timer = 0.0
-		pending_player = player
-	else:
-		_give_item(player)
-		
+			
 	interact_extra(player)
 	
-func _give_item(player):
+func set_highlight(enabled: bool):
 
-	if item_to_give:
-		#var item = item_to_give.instantiate()
-		#player.add_item(item)
-		player.add_item(item_to_give.duplicate())
+	highlighted = enabled
+
+	var material := sprite.material as ShaderMaterial
+
+	if material:
+		material.set_shader_parameter("enabled", enabled)
+
+func _give_item(player, item):
+
+	player.add_item(item_to_give)
+	storage_out = null;	
+	is_source = false
+	
+	
+func _take_item(player):
+	storage_in = player.remove_item()
+	
 	
 func _ready():
 	
@@ -99,11 +123,12 @@ func _process(delta):
 
 		if processing_timer >= processing_time:
 			is_processing = false
-			_give_item(pending_player)
+			storage_out = item_to_give
+			is_source = true
+			storage_in = null;
 			emit_signal("interact_finished", item_to_give, pending_player)
 			pending_player = null
 			
-		
 
 func _play_idle_sound():
 
@@ -117,14 +142,6 @@ func _play_idle_sound():
 	idle_audio.pitch_scale = randf_range(idle_pitch_min, idle_pitch_max)
 	idle_audio.play()
 
-func set_highlight(enabled: bool):
 
-	highlighted = enabled
-
-	var material := sprite.material as ShaderMaterial
-
-	if material:
-		material.set_shader_parameter("enabled", enabled)
-
-func is_true_parallelism():
-	return parallelism
+func is_object_source():
+	return is_source
