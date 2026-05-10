@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://cd6ecn5jcaabn" path="res://Scenes/Objects/dough_plant.tscn" id="7_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://crn87333op6nw" path="res://Scenes/Objects/pizza_combinator.tscn" id="8_v158k"]
 [ext_resource type="PackedScene" uid="uid://bndgefeqqs0ey" path="res://Scenes/Objects/Trashcan.tscn" id="9_h4fw4"]
+[ext_resource type="PackedScene" uid="uid://dorx7tcyndxhq" path="res://Scenes/Objects/customer.tscn" id="10_ldgsr"]
+[ext_resource type="PackedScene" uid="uid://ciw6yqqb5rtt0" path="res://Scenes/Items/pizza_cooked.tscn" id="11_o5yvi"]
 
 [node name="Game" type="Node2D" unique_id=714687722]
 y_sort_enabled = true
@@ -60,3 +62,7 @@ position = Vector2(-280, -82)
 
 [node name="Object4" parent="." unique_id=1417834632 instance=ExtResource("9_h4fw4")]
 position = Vector2(-364, -4)
+
+[node name="Object5" parent="." unique_id=246312306 instance=ExtResource("10_ldgsr")]
+position = Vector2(-124, 65)
+accepted_input = ExtResource("11_o5yvi")

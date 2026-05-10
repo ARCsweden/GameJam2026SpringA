@@ -5,5 +5,5 @@ func interact_extra(player, item):
 	is_source = false
 	if item != null:
 		player.remove_item()
-	print_debug("Trashcan interacted")
+	print_debug("Valued customer(Trashcan) interacted")
 	

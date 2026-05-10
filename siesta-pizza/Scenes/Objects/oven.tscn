@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dcigmo516jm40"]
 
 [ext_resource type="PackedScene" uid="uid://dxqttfqeuyp1i" path="res://Scenes/Objects/InteractableObject.tscn" id="1_eo5vf"]
-[ext_resource type="PackedScene" uid="uid://dxjtir2bblx4r" path="res://Scenes/Items/tomato.tscn" id="2_n8r5h"]
+[ext_resource type="PackedScene" uid="uid://dsexncgeq7tua" path="res://Scenes/Items/pizza_uncooked.tscn" id="2_3yvln"]
 [ext_resource type="PackedScene" uid="uid://ciw6yqqb5rtt0" path="res://Scenes/Items/pizza_cooked.tscn" id="3_3yvln"]
 [ext_resource type="Texture2D" uid="uid://3ahd65a8dog6" path="res://Assets/Art/pizzatest.png" id="4_n8r5h"]
 [ext_resource type="Texture2D" uid="uid://7y6rv2kpwi36" path="res://Assets/Art/Items/pizza_cooked.png" id="5_3yvln"]
-[ext_resource type="Shader" path="res://Scenes/Objects/oven.gdshader" id="5_qkp4g"]
+[ext_resource type="Shader" uid="uid://bydn38w6jxypk" path="res://Scenes/Objects/oven.gdshader" id="5_qkp4g"]
 [ext_resource type="Texture2D" uid="uid://bbckwst1svocv" path="res://icon.svg" id="6_fihkv"]
 [ext_resource type="Texture2D" uid="uid://clrliqoeh6uew" path="res://Assets/Art/bars.png" id="7_fihkv"]
 
@@ -59,7 +59,7 @@ size = Vector2(21, 39)
 
 [node name="Oven" unique_id=1350623349 instance=ExtResource("1_eo5vf")]
 interaction_name = "Oven"
-accepted_input = ExtResource("2_n8r5h")
+accepted_input = ExtResource("2_3yvln")
 item_to_give = ExtResource("3_3yvln")
 parallelism = true
 
