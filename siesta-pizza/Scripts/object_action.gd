@@ -66,6 +66,7 @@ func interact(player, item: Item):
 		_give_item(player, storage_out)
 		storage_out_empty = true
 		$ItemSprite.visible = false;
+		return
 	else:
 		if (storage_in != null):
 			if(item != null && storage_in.item_name == item.item_name):
@@ -78,6 +79,10 @@ func interact(player, item: Item):
 		is_processing = true
 		processing_timer = 0.0
 		
+		if play_sound_on_interact and interaction_sound:
+			audio.stream = interaction_sound
+			audio.pitch_scale = randf_range(pitch_min, pitch_max)
+			audio.play()
 		
 		
 	#if storage_out != null:
@@ -92,10 +97,7 @@ func interact(player, item: Item):
 		#processing_timer = 0.0
 		#pending_player = player
 		
-	if play_sound_on_interact and interaction_sound:
-		audio.stream = interaction_sound
-		audio.pitch_scale = randf_range(pitch_min, pitch_max)
-		audio.play()
+
 			
 	interact_extra(player, item)
 	

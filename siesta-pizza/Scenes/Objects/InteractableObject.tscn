@@ -17,7 +17,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Object" type="Node2D" unique_id=1350623349]
+[node name="Object2" type="Node2D" unique_id=1350623349]
 texture_filter = 1
 script = ExtResource("1_awgt1")
 
