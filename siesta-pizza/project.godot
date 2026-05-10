@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 FootstepManager="*uid://djlndxx646nwf"
+InventoryItem="*uid://neuvou3uxb8j"
 
 [input]
 

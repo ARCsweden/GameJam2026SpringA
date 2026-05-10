@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://boek4wtlndykh" path="res://Scenes/Objects/Cow.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://b8dkn0tiuc00c" path="res://Scenes/Objects/tomato_plant.tscn" id="4_wowpa"]
 [ext_resource type="PackedScene" uid="uid://dcigmo516jm40" path="res://Scenes/Objects/oven.tscn" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://bndgefeqqs0ey" path="res://Scenes/Objects/Trashcan.tscn" id="6_i6g32"]
+
 
 [node name="Game" type="Node2D" unique_id=714687722]
 y_sort_enabled = true
@@ -38,13 +40,16 @@ drag_right_margin = 0.1
 drag_bottom_margin = 0.1
 
 [node name="Object" parent="." unique_id=1350623349 instance=ExtResource("3_wrm1d")]
-position = Vector2(-318, 57)
+position = Vector2(-19, 63)
 
 [node name="Tomato" parent="." unique_id=1652160933 instance=ExtResource("4_wowpa")]
 position = Vector2(-368, -154)
 
 [node name="Tomato2" parent="." unique_id=1595038453 instance=ExtResource("4_wowpa")]
-position = Vector2(-317, -154)
+position = Vector2(-111, 66)
 
-[node name="Oven" parent="." unique_id=42312829 instance=ExtResource("6_i6g32")]
-position = Vector2(-90, 0)
+[node name="Oven" parent="." unique_id=947022970 instance=ExtResource("5_wowpa")]
+position = Vector2(-63, -33)
+
+[node name="Object2" parent="." unique_id=171228678 instance=ExtResource("6_i6g32")]
+position = Vector2(-127, -89)
