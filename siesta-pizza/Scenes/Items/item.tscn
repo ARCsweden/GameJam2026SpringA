@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://neuvou3uxb8j" path="res://Scripts/item.gd" id="1_eb5tt"]
 
 [node name="Item" type="Node2D" unique_id=805171685]
+texture_filter = 1
 script = ExtResource("1_eb5tt")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1287651581]

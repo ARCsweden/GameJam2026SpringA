@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cbmb0opg3vgko" path="res://Assets/Music/cow_idle_moo.mp3" id="3_caliw"]
 [ext_resource type="PackedScene" uid="uid://5r6l7c6xlhix" path="res://Scenes/Items/milk.tscn" id="3_h3gkm"]
 [ext_resource type="AudioStream" uid="uid://4nlbljysue31" path="res://Assets/Music/cow_active_moo.mp3" id="4_8nwpd"]
+[ext_resource type="Texture2D" uid="uid://bbhdidpvk8dus" path="res://Assets/Art/Items/milk.png" id="7_u4w15"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xxx6f"]
 animations = [{
@@ -29,22 +30,17 @@ item_to_give = ExtResource("3_h3gkm")
 idle_sounds = Array[AudioStream]([ExtResource("3_caliw")])
 interaction_sound = ExtResource("4_8nwpd")
 idle_min_delay = 8.0
-idle_volume_db = null
-idle_pitch = null
-play_idle_sound = null
-volume_db = null
-pitch_min = null
-pitch_max = null
-play_sound_on_interact = null
 
 [node name="Sprite" parent="." index="2" unique_id=662202950]
 scale = Vector2(0.7109375, 0.7109375)
 sprite_frames = SubResource("SpriteFrames_xxx6f")
 animation = &"default"
 
-[node name="Body" parent="." index="3" unique_id=1925049183]
-collision_layer = 6
+[node name="ItemSprite" parent="." index="3" unique_id=339095134]
+position = Vector2(0, -23)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("7_u4w15")
 
-[node name="Collision" parent="Body" index="0" unique_id=738313803]
+[node name="Collision" parent="Body" parent_id_path=PackedInt32Array(1925049183) index="0" unique_id=738313803]
 position = Vector2(3, 11)
 shape = SubResource("CapsuleShape2D_caliw")
