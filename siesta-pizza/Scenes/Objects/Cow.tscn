@@ -28,13 +28,22 @@ interaction_name = "Cow"
 item_to_give = ExtResource("3_h3gkm")
 idle_sounds = Array[AudioStream]([ExtResource("3_caliw")])
 interaction_sound = ExtResource("4_8nwpd")
-idle_min_delay = 15.0
-idle_max_delay = 25.0
+idle_min_delay = 8.0
+idle_volume_db = null
+idle_pitch = null
+play_idle_sound = null
+volume_db = null
+pitch_min = null
+pitch_max = null
+play_sound_on_interact = null
 
 [node name="Sprite" parent="." index="2" unique_id=662202950]
 sprite_frames = SubResource("SpriteFrames_xxx6f")
 animation = &"default"
 
-[node name="Collision" parent="Body" parent_id_path=PackedInt32Array(1925049183) index="0" unique_id=738313803]
+[node name="Body" parent="." index="3" unique_id=1925049183]
+collision_layer = 6
+
+[node name="Collision" parent="Body" index="0" unique_id=738313803]
 position = Vector2(3, 11)
 shape = SubResource("CapsuleShape2D_caliw")
