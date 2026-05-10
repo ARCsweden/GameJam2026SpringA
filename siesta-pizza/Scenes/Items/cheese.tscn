@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://y4ccjd26ooxa"]
+
+[ext_resource type="PackedScene" uid="uid://bbxxifrsgv3k6" path="res://Scenes/Items/item.tscn" id="1_mxkw8"]
+[ext_resource type="Texture2D" uid="uid://bdtib1serpuo6" path="res://Assets/Art/Items/cheese.png" id="2_v2w2i"]
+
+[node name="Item" unique_id=805171685 instance=ExtResource("1_mxkw8")]
+item_name = "cheese"
+icon = ExtResource("2_v2w2i")
+
+[node name="Sprite" parent="." index="0" unique_id=1287651581]
+texture = ExtResource("2_v2w2i")
