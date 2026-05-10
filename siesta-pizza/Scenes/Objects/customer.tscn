@@ -19,7 +19,7 @@ animations = [{
 radius = 3.0
 height = 12.0
 
-[node name="Object" unique_id=1350623349 instance=ExtResource("1_h0ioy")]
+[node name="Customer" unique_id=1350623349 instance=ExtResource("1_h0ioy")]
 script = ExtResource("2_mk1u2")
 interaction_name = "Customer"
 processing_time = 0.0

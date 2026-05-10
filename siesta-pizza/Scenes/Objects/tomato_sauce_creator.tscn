@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://cgt0jm70e1w32"]
+
+[ext_resource type="PackedScene" uid="uid://dxqttfqeuyp1i" path="res://Scenes/Objects/InteractableObject.tscn" id="1_8kavq"]
+[ext_resource type="Texture2D" uid="uid://8k1tyqk6dug4" path="res://Assets/Art/Objects/spis-sheet.png" id="2_ew5jb"]
+[ext_resource type="Script" uid="uid://5fi5hdh33y74" path="res://Scripts/tomato_sauce_creator.gd" id="2_kygmj"]
+[ext_resource type="Shader" uid="uid://16eoqiwixe66" path="res://Scenes/Objects/InteractableObject.gdshader" id="4_5g2jx"]
+[ext_resource type="Texture2D" uid="uid://baay06464as52" path="res://Assets/Art/Items/Tomatosauce.png" id="4_aya4w"]
+[ext_resource type="Texture2D" uid="uid://cdhq7rgwypeis" path="res://Assets/Art/Objects/grandma.png" id="5_kc6m3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kygmj"]
+atlas = ExtResource("2_ew5jb")
+region = Rect2(34, 0, 34, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aya4w"]
+atlas = ExtResource("2_ew5jb")
+region = Rect2(68, 0, 34, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g2jx"]
+atlas = ExtResource("2_ew5jb")
+region = Rect2(102, 0, 34, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kc6m3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kygmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aya4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5g2jx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w0aqa"]
+shader = ExtResource("4_5g2jx")
+shader_parameter/outline_color = Color(1, 1, 0, 1)
+shader_parameter/outline_size = 1.0
+shader_parameter/enabled = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8kavq"]
+size = Vector2(19, 32)
+
+[node name="Sauce" unique_id=1350623349 instance=ExtResource("1_8kavq")]
+script = ExtResource("2_kygmj")
+processing_time = 10.0
+
+[node name="Sprite" parent="." index="2" unique_id=662202950]
+sprite_frames = SubResource("SpriteFrames_kc6m3")
+
+[node name="Grandma" type="Sprite2D" parent="." index="3" unique_id=885614993]
+material = SubResource("ShaderMaterial_w0aqa")
+position = Vector2(-15, 5)
+scale = Vector2(0.5875, 0.5875)
+texture = ExtResource("5_kc6m3")
+
+[node name="ItemSprite" parent="." index="4" unique_id=339095134]
+position = Vector2(0, -28)
+scale = Vector2(0.265625, 0.265625)
+texture = ExtResource("4_aya4w")
+
+[node name="Collision" parent="Body" parent_id_path=PackedInt32Array(1925049183) index="0" unique_id=738313803]
+position = Vector2(2.1855694e-08, 10.5)
+shape = SubResource("RectangleShape2D_8kavq")
