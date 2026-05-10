@@ -8,6 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://dcigmo516jm40" path="res://Scenes/Objects/oven.tscn" id="6_i6g32"]
 [ext_resource type="Texture2D" uid="uid://d0olvkdgafqlo" path="res://firetexture.tres" id="7_v158k"]
 [ext_resource type="Script" uid="uid://del50wexkfju" path="res://Scenes/point_light_2d.gd" id="8_h4fw4"]
+[ext_resource type="PackedScene" uid="uid://crn87333op6nw" path="res://Scenes/Objects/pizza_combinator.tscn" id="9_ewbju"]
+[ext_resource type="PackedScene" uid="uid://bis2dh5cdyfpq" path="res://Scenes/Objects/cheeseMachine.tscn" id="10_85qyi"]
+[ext_resource type="PackedScene" uid="uid://cd6ecn5jcaabn" path="res://Scenes/Objects/dough_plant.tscn" id="11_iivbl"]
+[ext_resource type="PackedScene" uid="uid://dorx7tcyndxhq" path="res://Scenes/Objects/customer.tscn" id="12_7nbq1"]
+[ext_resource type="PackedScene" uid="uid://ciw6yqqb5rtt0" path="res://Scenes/Items/pizza_cooked.tscn" id="13_exi56"]
+[ext_resource type="PackedScene" path="res://Scenes/Objects/tomato_sauce_creator.tscn" id="14_7t8sx"]
+[ext_resource type="PackedScene" uid="uid://dxjtir2bblx4r" path="res://Scenes/Items/tomato.tscn" id="15_mg4q0"]
+[ext_resource type="PackedScene" path="res://Scenes/Items/tomato_sauce.tscn" id="16_vm72l"]
+[ext_resource type="PackedScene" uid="uid://bndgefeqqs0ey" path="res://Scenes/Objects/Trashcan.tscn" id="17_22asu"]
 
 [node name="Game" type="Node2D" unique_id=714687722]
 y_sort_enabled = true
@@ -50,6 +59,7 @@ position = Vector2(-317, -154)
 
 [node name="Oven" parent="." unique_id=42312829 instance=ExtResource("6_i6g32")]
 position = Vector2(-198, -166)
+processing_time = 15.0
 
 [node name="PointLight2D" type="PointLight2D" parent="Oven" unique_id=1661157314]
 position = Vector2(1.4999957, 58.500008)
@@ -58,3 +68,25 @@ color = Color(0.8260532, 0.24690503, 0, 1)
 shadow_enabled = true
 texture = ExtResource("7_v158k")
 script = ExtResource("8_h4fw4")
+
+[node name="Object2" parent="." unique_id=2146612422 instance=ExtResource("9_ewbju")]
+position = Vector2(-127, -156)
+
+[node name="CheeseMachine" parent="." unique_id=1230942691 instance=ExtResource("10_85qyi")]
+position = Vector2(-131, -82)
+
+[node name="Dough" parent="." unique_id=1423036774 instance=ExtResource("11_iivbl")]
+position = Vector2(-267, -159)
+
+[node name="Customer" parent="." unique_id=23050706 instance=ExtResource("12_7nbq1")]
+position = Vector2(-125, 46)
+accepted_input = ExtResource("13_exi56")
+
+[node name="Sauce" parent="." unique_id=406375517 instance=ExtResource("14_7t8sx")]
+position = Vector2(-56, -143)
+accepted_input = ExtResource("15_mg4q0")
+item_to_give = ExtResource("16_vm72l")
+
+[node name="Object3" parent="." unique_id=1856536411 instance=ExtResource("17_22asu")]
+position = Vector2(-56.999996, -82)
+scale = Vector2(0.7, 0.7)
